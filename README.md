@@ -1,4 +1,4 @@
-SVG-Animations
+SVG Animations
 ==============
 
 Some SVG Paths and Animations.

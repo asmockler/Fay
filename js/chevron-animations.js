@@ -1,5 +1,16 @@
 window.onload = function() {
 
+    var animationSpeed = $('#animation-speed').val();
+    $('#set-animation-speed').on('click', function(){
+        animationSpeed = $('#animation-speed').val();
+        $('.alert-content').html('Animation speed set to <strong>' + animationSpeed + '</strong>')
+        $('.toaster').fadeIn(300, function(){
+            $('.close, .much-alert').on('click', function(){
+                $('.toaster').fadeOut(300);
+            });
+        });
+    });
+
     // ##### Flip Animation #####
 
     var flip = new Raphael(document.getElementById('flip-over'), 50, 50);
@@ -13,7 +24,7 @@ window.onload = function() {
 
         el.animate({
             path: 'M 5 35 l 20 -20 l 20 20'
-        }, 200, '<<>>');
+        }, animationSpeed, '<<>>');
 
         $('#flip-over').attr('down', 'false');
     },
@@ -22,7 +33,7 @@ window.onload = function() {
 
         el.animate({
             path: 'M 5 15 l 20 20 l 20 -20'
-        }, 200, '<<>>');
+        }, animationSpeed, '<<>>');
 
         $('#flip-over').attr('down', 'true');
     },
@@ -48,13 +59,13 @@ window.onload = function() {
     fanDownToUp = function(el) {
         el.animate({
             path: 'M 25 15 l 0 20 l 0 -20'
-        }, 150, '<>', function(){
+        }, animationSpeed*.4, '<>', function(){
             el.animate({
                 path: 'M 25 35 l 0 -20 l 0 20'
-            }, 100, '<>', function(){
+            }, animationSpeed*.2, '<>', function(){
                 el.animate({
                     path: 'M 5 35 l 20 -20 l 20 20'
-                }, 150, '<>');
+                }, animationSpeed*.4, '<>');
             });
         });
     },
@@ -62,13 +73,13 @@ window.onload = function() {
     fanUpToDown = function(el){
         el.animate({
             path: 'M 25 35 l 0 -20 l 0 20'
-        }, 150, '<>', function(){
+        }, animationSpeed*.45, '<>', function(){
             el.animate({
                 path: 'M 25 15 l 0 20 l 0 -20'
-            }, 100, '<>', function(){
+            }, animationSpeed*.1, '<>', function(){
                 el.animate({
                     path: 'M 5 15 l 20 20 l 20 -20'
-                }, 150, '<>');
+                }, animationSpeed*.45, '<>');
             });
         });
     },
@@ -95,20 +106,20 @@ window.onload = function() {
     fanDownToUp2 = function(el){
         el.animate({
             path: 'M 25 35 l 0 -20 l 0 20'
-        }, 150, '<>', function(){
+        }, animationSpeed*.5, '<>', function(){
             el.animate({
                 path: 'M 5 35 l 20 -20 l 20 20'
-            }, 150, '<>');
+            }, animationSpeed*.5, '<>');
         });
     },
 
     fanUpToDown2 = function(el) {
         el.animate({
             path: 'M 25 15 l 0 20 l 0 -20'
-        }, 150, '<>', function(){
+        }, animationSpeed*.5, '<>', function(){
             el.animate({
                 path: 'M 5 15 l 20 20 l 20 -20'
-            }, 150, '<>');
+            }, animationSpeed*.5, '<>');
         });
     },
 
@@ -134,13 +145,13 @@ window.onload = function() {
     fanDownToUp3 = function(el) {
         el.animate({
             path: 'M 25 15 l 0 20 l 0 -20'
-        }, 150, '<>', function(){
+        }, animationSpeed*.5, '<>', function(){
             el.animate({
                 path: 'M 25 35 l 0 -20 l 0 20'
             }, 0, '<>', function(){
                 el.animate({
                     path: 'M 5 35 l 20 -20 l 20 20'
-                }, 150, '<>')
+                }, animationSpeed*.5, '<>')
             });
         });
     },
@@ -148,13 +159,13 @@ window.onload = function() {
     fanUpToDown3 = function(el) {
         el.animate({
             path: 'M 25 35 l 0 -20 l 0 20'
-        }, 150, '<>', function(){
+        }, animationSpeed*.5, '<>', function(){
             el.animate({
                 path: 'M 25 15 l 0 20 l 0 -20'
             }, 0 , '<>', function(){
                 el.animate({
                     path: 'M 5 15 l 20 20 l 20 -20'
-                }, 150, '<>');
+                }, animationSpeed*.5, '<>');
             });
         });
     },
@@ -181,20 +192,20 @@ window.onload = function() {
     fanDownToUp4 = function(el){
         el.animate({
             path: 'M 23 15 l 2 20 l 2 -20'
-        }, 150, '<>', function(){
+        }, animationSpeed*.5, '<>', function(){
             el.animate({
                 path: 'M 5 35 l 20 -20 l 20 20'
-            }, 150, '<>')
+            }, animationSpeed*.5, '<>')
         });
     },
 
     fanUpToDown4 = function(el){
         el.animate({
             path: 'M 23 35 l 2 -20 l 2 20'
-        }, 150, '<>', function(){
+        }, animationSpeed*.5, '<>', function(){
             el.animate({
                 path: 'M 5 15 l 20 20 l 20 -20'
-            }, 150, '<>');
+            }, animationSpeed*.5, '<>');
         });
     },
 
@@ -208,45 +219,117 @@ window.onload = function() {
         }
     });
 
-    $('button').on('click', function(){
+    // ##### MENU 1 #####
 
-        if ( $('#fan-in-out-3').attr('down') == 'true' ){
-            fanDownToUp3(chevronFanInOut3);
-            $('#fan-in-out-3').attr('down', 'false');
-        } else {
-            fanUpToDown3(chevronFanInOut3);
-            $('#fan-in-out-3').attr('down', 'true');
-        }
+    var menu1 = new Raphael('menu1', 50, 50);
+    var menu1Path = menu1.path("M 5 15 l 40 0 M 5 25 l 40 0 M 5 35 l 40 0").attr({
+                        'stroke-linejoin': 'round',
+                        'stroke-width': 2,
+                        'stroke-linecap': 'round'
+                    });
 
-        if ( $('#flip-over').attr('down') == "true" ){
-            flipDownToUp(chevronFlip);
-        } else {
-            flipUpToDown(chevronFlip);
-        }
+    menu1AnimateOpen = function(el){
+        el.animate({
+            path: 'M 10 10 l 30 30 M 10 40 l 30 -30',
+            transform: 'R180'
+        }, animationSpeed, '<>');
+    },
 
-        if ( $('#fan-in-out').attr('down') == 'true' ){
-            fanDownToUp(chevronFanInOut);
-            $('#fan-in-out').attr('down', 'false');
-        } else {
-            fanUpToDown(chevronFanInOut);
-            $('#fan-in-out').attr('down', 'true');
-        }
+    menu1AnimateClose = function(el){
+        el.animate({
+            path: 'M 5 15 l 40 0 M 5 25 l 40 0 M 5 35 l 40 0',
+            transform: 'R0'
+        }, animationSpeed, '<>');
+    },
 
-        if ( $('#fan-in-out-2').attr('down') == 'true' ){
-            fanDownToUp2(chevronFanInOut2);
-            $('#fan-in-out-2').attr('down', 'false');
+    $('#menu1').click(function(){
+        if ( $(this).attr('data-menu-open') == 'false' ){
+            menu1AnimateOpen(menu1Path);
+            $(this).attr('data-menu-open', 'asdklfj');
         } else {
-            fanUpToDown2(chevronFanInOut2);
-            $('#fan-in-out-2').attr('down', 'true');
-        }
-
-        if ( $('#fan-in-out-4').attr('down') == 'true' ){
-            fanDownToUp4(chevronFanInOut4);
-            $('#fan-in-out-4').attr('down', 'false');
-        } else {
-            fanUpToDown4(chevronFanInOut4);
-            $('#fan-in-out-4').attr('down', 'true');
+            menu1AnimateClose(menu1Path);
+            $(this).attr('data-menu-open', 'false');
         }
     });
+
+    // ##### MENU 2 #####
+
+    var menu2 = new Raphael('menu2', 50, 50);
+    var menu2Path = menu2.path("M 5 15 l 40 0 M 5 25 l 40 0 M 5 35 l 40 0").attr({
+                        'stroke-linejoin': 'round',
+                        'stroke-width': 2,
+                        'stroke-linecap': 'round'
+                    });
+
+    menu2AnimateOpen = function(el){
+        el.animate({
+            path: 'M 25, 10 l 0 30 M 25, 10 l 0 30 M 25, 10 l 0 30'
+        }, animationSpeed*.5, '<>', function() {
+            el.animate({
+                path: 'M 25, 10 l 0 30 M 25, 10 l 0 30',
+            }, 0, '<>', function(){
+                el.animate({
+                    path: 'M 10 40 l 30 -30 M 10 10 l 30 30',
+                }, animationSpeed*.5, '<>')
+            });
+        });
+    },
+
+    menu2AnimateClose = function(el){
+        el.animate({
+            path: 'M 5 15 l 40 0 M 5 25 l 40 0 M 5 35 l 40 0'
+        }, animationSpeed*.5, '<>');
+    },
+
+    $('#menu2').click(function(){
+        if ( $(this).attr('data-menu-open') == 'false' ){
+            menu2AnimateOpen(menu2Path);
+            $(this).attr('data-menu-open', 'asdklfj');
+        } else {
+            menu2AnimateClose(menu2Path);
+            $(this).attr('data-menu-open', 'false');
+        }
+    });    
+
+    // $('button').on('click', function(){
+
+    //     if ( $('#fan-in-out-3').attr('down') == 'true' ){
+    //         fanDownToUp3(chevronFanInOut3);
+    //         $('#fan-in-out-3').attr('down', 'false');
+    //     } else {
+    //         fanUpToDown3(chevronFanInOut3);
+    //         $('#fan-in-out-3').attr('down', 'true');
+    //     }
+
+    //     if ( $('#flip-over').attr('down') == "true" ){
+    //         flipDownToUp(chevronFlip);
+    //     } else {
+    //         flipUpToDown(chevronFlip);
+    //     }
+
+    //     if ( $('#fan-in-out').attr('down') == 'true' ){
+    //         fanDownToUp(chevronFanInOut);
+    //         $('#fan-in-out').attr('down', 'false');
+    //     } else {
+    //         fanUpToDown(chevronFanInOut);
+    //         $('#fan-in-out').attr('down', 'true');
+    //     }
+
+    //     if ( $('#fan-in-out-2').attr('down') == 'true' ){
+    //         fanDownToUp2(chevronFanInOut2);
+    //         $('#fan-in-out-2').attr('down', 'false');
+    //     } else {
+    //         fanUpToDown2(chevronFanInOut2);
+    //         $('#fan-in-out-2').attr('down', 'true');
+    //     }
+
+    //     if ( $('#fan-in-out-4').attr('down') == 'true' ){
+    //         fanDownToUp4(chevronFanInOut4);
+    //         $('#fan-in-out-4').attr('down', 'false');
+    //     } else {
+    //         fanUpToDown4(chevronFanInOut4);
+    //         $('#fan-in-out-4').attr('down', 'true');
+    //     }
+    // });
 
 };

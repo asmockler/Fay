@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Chevron Animations</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <style>
             div{
                 display: inline;
@@ -11,15 +12,50 @@
         </style>
     </head>
     <body>
-        <div id="flip-over" down="true"></div>
-        <div id="fan-in-out" down="true"></div>
-        <div id="fan-in-out-2" down="true"></div>
-        <div id="fan-in-out-3" down="true"></div>
-        <div id="fan-in-out-4" down="true"></div>
+	    <div class="container">
 
-        <button id="trigger-all">Trigger All</button>
+			<div class="much-alert" style="position:absolute;width:100%;top:10;left:0;">
+				<div class="row toaster" style="display:none">
+					<div class="col-sm-4 col-sm-offset-4 alert alert-info alert-dismissible">
+						<button class="close">&times;</button>
+						<span class="alert-content"></span>
+					</div>
+				</div>
+			</div>
+
+	    	<div class="row">
+	    		<div class="col-sm-12">
+	    			<div id="flip-over" down="true"></div>
+			        <div id="fan-in-out" down="true"></div>
+			        <div id="fan-in-out-2" down="true"></div>
+			        <div id="fan-in-out-3" down="true"></div>
+			        <div id="fan-in-out-4" down="true"></div>
+	    		</div>
+		    </div>
+
+		    <div class="row">
+		    	<div class="col-sm-12">
+		    		<div id="menu1" data-menu-open="false"></div>
+		    		<div id="menu2" data-menu-open="false"></div>
+		    	</div>
+		    </div>
+	        
+	        <div class="row">
+	        	<div class="col-sm-5">
+	        		<label for="speed">Animation Speed (in milliseconds)</label>
+		        	<div class="input-group">
+		        		<input type="text" name="speed" value="300" class="form-control" id="animation-speed">
+		        		<span class="input-group-btn">
+		        			<button class="btn btn-danger" id="set-animation-speed">Change Speed!</button>
+		        		</span>
+		        	</div>
+	        	</div>
+	        </div>
+
+	    </div><!-- /.CONTAINER -->
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/rafael.js"></script>
         <script type="text/javascript" src="js/chevron-animations.js"></script>
     </body>

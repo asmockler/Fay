@@ -1,4 +1,4 @@
-SVG Animations
+Fay
 ==============
 
-Some SVG Paths and Animations.
+A library of animated icons drawn with the Raphael JavaScript SVG library.

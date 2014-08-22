@@ -11,10 +11,14 @@ window.onload = function() {
         });
     });
 
+    // ##### ICON SHAPES #####
+
+
+
     // ##### Flip Animation #####
 
     var flip = new Raphael(document.getElementById('flip-over'), 50, 50);
-    var chevronFlip = flip.path('M 5 15 l 20 20 l 20 -20');
+    var chevronFlip = flip.path(PathChevronUp);
     chevronFlip.attr({
         'stroke-linejoin': 'round',
         'stroke-width': 2
@@ -24,7 +28,7 @@ window.onload = function() {
 
         el.animate({
             path: 'M 5 35 l 20 -20 l 20 20'
-        }, animationSpeed, '<<>>');
+        }, animationSpeed, '<>');
 
         $('#flip-over').attr('down', 'false');
     },
@@ -33,7 +37,7 @@ window.onload = function() {
 
         el.animate({
             path: 'M 5 15 l 20 20 l 20 -20'
-        }, animationSpeed, '<<>>');
+        }, animationSpeed, '<>');
 
         $('#flip-over').attr('down', 'true');
     },
@@ -73,13 +77,13 @@ window.onload = function() {
     fanUpToDown = function(el){
         el.animate({
             path: 'M 25 35 l 0 -20 l 0 20'
-        }, animationSpeed*.45, '<>', function(){
+        }, animationSpeed*.45, '<', function(){
             el.animate({
                 path: 'M 25 15 l 0 20 l 0 -20'
             }, animationSpeed*.1, '<>', function(){
                 el.animate({
                     path: 'M 5 15 l 20 20 l 20 -20'
-                }, animationSpeed*.45, '<>');
+                }, animationSpeed*.45, '>');
             });
         });
     },
@@ -284,12 +288,58 @@ window.onload = function() {
     $('#menu2').click(function(){
         if ( $(this).attr('data-menu-open') == 'false' ){
             menu2AnimateOpen(menu2Path);
-            $(this).attr('data-menu-open', 'asdklfj');
+            $(this).attr('data-menu-open', 'true');
         } else {
             menu2AnimateClose(menu2Path);
             $(this).attr('data-menu-open', 'false');
         }
+    });  
+
+    // ##### MENU 3 #####
+
+    var menu3size = $('#menu3').attr('data-size');
+    var menu3ScaleAmount = menu3size / 50;
+    var menu3 = new Raphael('menu3', 50*menu3ScaleAmount, 50*menu3ScaleAmount);
+    var menu3Path = menu3.path("M " + 5*menu3ScaleAmount + " " + 15*menu3ScaleAmount + " l " + 40*menu3ScaleAmount + " " + 0 + " M " + 5*menu3ScaleAmount + " " + 25*menu3ScaleAmount + " l " + 40*menu3ScaleAmount + " " + 0 + " M " + 5*menu3ScaleAmount + " " + 35*menu3ScaleAmount + " l " + 40*menu3ScaleAmount + " " + 0).attr({
+                        'stroke-linejoin': 'round',
+                        'stroke-width': (2*menu3ScaleAmount > 1) ? 2*menu3ScaleAmount : 2,
+                        'stroke-linecap': 'round'
+                    });
+
+
+    menu3AnimateOpen = function(el){
+        el.animate({
+            path: "M " + 25*menu3ScaleAmount + " " + 10*menu3ScaleAmount + " l " + 0 + " " + 30*menu3ScaleAmount + " M " + 25*menu3ScaleAmount + " " + 10*menu3ScaleAmount + " l " + 0 + " " + 30*menu3ScaleAmount + " M " + 25*menu3ScaleAmount + " " + 10*menu3ScaleAmount + " l " + 0 + " " + 30*menu3ScaleAmount,
+        }, animationSpeed*.5, '<>', function() {
+            el.animate({
+                path: "M " + 25*menu3ScaleAmount + " " + 10*menu3ScaleAmount + " l " + 0 + " " + 30*menu3ScaleAmount + " M " + 25*menu3ScaleAmount + " " + 10*menu3ScaleAmount + " l " + 0 + " " + 30*menu3ScaleAmount,
+            }, 0, '<>', function(){
+                el.animate({
+                    path: "M " + 10*menu3ScaleAmount + " " + 40*menu3ScaleAmount + " l " + 30*menu3ScaleAmount + " " + -30*menu3ScaleAmount + " M " + 10*menu3ScaleAmount + " " + 10*menu3ScaleAmount + " l " + 30*menu3ScaleAmount + " " + 30*menu3ScaleAmount,
+                }, animationSpeed*.5, '<>')
+            });
+        });
+    },
+
+    menu3AnimateClose = function(el){
+        el.animate({
+            path: "M " + 5*menu3ScaleAmount + " " + 15*menu3ScaleAmount + " l " + 40*menu3ScaleAmount + " " + 0 + " M " + 5*menu3ScaleAmount + " " + 25*menu3ScaleAmount + " l " + 40*menu3ScaleAmount + " " + 0 + " M " + 5*menu3ScaleAmount + " " + 35*menu3ScaleAmount + " l " + 40*menu3ScaleAmount + " " + 0
+        }, animationSpeed*.5, '<>');
+    },
+
+    $('#menu3').click(function(){
+        if ( $(this).attr('data-menu-open') == 'false' ){
+            menu3AnimateOpen(menu3Path);
+            $(this).attr('data-menu-open', 'true');
+        } else {
+            menu3AnimateClose(menu3Path);
+            $(this).attr('data-menu-open', 'false');
+        }
     });    
+
+
+    // Ok use transform.scale to scale the icons to the given size.
+
 
     // $('button').on('click', function(){
 

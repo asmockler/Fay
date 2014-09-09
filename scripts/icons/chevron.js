@@ -1,4 +1,4 @@
-$('.fay-chevron').each(function ( i ){
+$("[class*='fay-chevron'").each(function ( i ){
 
 	/////////////////////
 	// DECLARING SCALE //
@@ -6,7 +6,11 @@ $('.fay-chevron').each(function ( i ){
 
 	var elementScale = $(this).attr('data-fay-scale');
 	var size = elementScale / 50 || 1;
-	var strokeWidth = elementScale / 25 || 2;
+	if ( $(this).attr('data-fay-stroke') ) {
+		var strokeWidth = $(this).attr('data-fay-stroke')
+	} else {
+		var strokeWidth = elementScale / 25 || 2;
+	}
 
 	//////////////////
 	// BASIC SHAPES //
@@ -153,26 +157,26 @@ $('.fay-chevron').each(function ( i ){
    	// Click and animation logic
 	$(this).on('click', function(){
 		if ( $(this).attr('data-fay-up') == 'true' ){
-			if ( $(this).hasClass('fay-chev-default-down') || $(this).hasClass('fay-chev-default') ) {
+			if ( $(this).hasClass('fay-chevron-default-down') || $(this).hasClass('fay-chevron-default') ) {
     			chevronDefaultDown(path);
-    		} else if ( $(this).hasClass('fay-chev-fan-down') || $(this).hasClass('fay-chev-fan') ) {
+    		} else if ( $(this).hasClass('fay-chevron-fan-down') || $(this).hasClass('fay-chevron-fan') ) {
     			chevronFanDown(path);
-    		} else if ( $(this).hasClass('fay-chev-flip-down') || $(this).hasClass('fay-chev-flip') ) {
+    		} else if ( $(this).hasClass('fay-chevron-flip-down') || $(this).hasClass('fay-chevron-flip') ) {
     			chevronFlipDown(path);
-    		} else if ( $(this).hasClass('fay-chev-spring-down') || $(this).hasClass('fay-chev-spring') ) {
+    		} else if ( $(this).hasClass('fay-chevron-spring-down') || $(this).hasClass('fay-chevron-spring') ) {
     			chevronSpringDown(path);
     		} else {
     			chevronDefaultDown(path);
     		}
 			$(this).attr('data-fay-up', 'false');
 		} else {
-			if ( $(this).hasClass('fay-chev-default-up') || $(this).hasClass('fay-chev-default') ){
+			if ( $(this).hasClass('fay-chev-default-up') || $(this).hasClass('fay-chevron-default') ){
     			chevronDefaultUp(path);
-    		} else if ( $(this).hasClass('fay-chev-fan-up') || $(this).hasClass('fay-chev-fan') ) {
+    		} else if ( $(this).hasClass('fay-chevron-fan-up') || $(this).hasClass('fay-chevron-fan') ) {
     			chevronFanUp(path);
-    		} else if ( $(this).hasClass('fay-chev-flip-up') || $(this).hasClass('fay-chev-flip') ) {
+    		} else if ( $(this).hasClass('fay-chevron-flip-up') || $(this).hasClass('fay-chevron-flip') ) {
     			chevronFlipUp(path);
-    		} else if ( $(this).hasClass('fay-chev-spring-up') || $(this).hasClass('fay-chev-spring') ){
+    		} else if ( $(this).hasClass('fay-chevron-spring-up') || $(this).hasClass('fay-chevron-spring') ){
     			chevronSpringUp(path);
     		} else {
     			chevronDefaultUp(path);

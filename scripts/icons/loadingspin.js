@@ -1,4 +1,4 @@
-$("[class*='fay-menu'").each(function ( i ){
+$("[class*='fay-loading'").each(function ( i ){
 
 	/////////////////////
 	// DECLARING SCALE //
@@ -16,8 +16,8 @@ $("[class*='fay-menu'").each(function ( i ){
 	// BASIC SHAPES //
 	//////////////////
 
-	var menuBars = 'M ' + 5*size + ' ' + 15*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 35*size + ' l ' + 40*size + ' ' + 0
-	var menuX = 'M ' + 10*size + ' ' + 10*size + ' l ' + 30*size + ' ' + 30*size + ' M ' + 10*size + ' ' + 40*size + ' l ' + 30*size + ' ' + -30*size
+	var loadingCircle = '';
+	var loadingWave = '';
 
 	////////////////
 	// ANIMATIONS //

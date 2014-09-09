@@ -1,65 +1,45 @@
-<html>
-    <head>
-        <title>Chevron Animations</title>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <style>
-            div{
-                display: inline;
-            }
-            button{
-                display:block;
-            }
-        </style>
-    </head>
-    <body>
-	    <div class="container">
-
-			<div class="much-alert" style="position:absolute;width:100%;top:10;left:0;">
-				<div class="row toaster" style="display:none">
-					<div class="col-sm-4 col-sm-offset-4 alert alert-info alert-dismissible">
-						<button class="close">&times;</button>
-						<span class="alert-content"></span>
-					</div>
-				</div>
+<!DOCTYPE html>
+<html lang="eng">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Fay Test Page</title>
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="public/styles.css">
+		<script src="scripts/lib/require.js" data-main="scripts/main"></script>
+	</head>
+	<body>
+		<div class="menu">
+			<div class="fay-menu fay-menu-spin"></div>
+		</div>
+		<div class="jumbotron">
+			<div class="container">
+				<h1 class="text-center">Fay.js</h1>
+				<p class="lead text-center">An animated SVG icon library for <br> discerning developers</p>
 			</div>
+		</div>
+		<div class="container">
+			<h2>Fay is an easy-to-implement animated icon library.</h2>
+			<p>Icons are added to any element by including simple class names such as <code>.fay-menu</code> or <code>.fay-chevron</code>.</p>
 
-	    	<div class="row">
-	    		<div class="col-sm-12">
-	    			<div id="flip-over" down="true"></div>
-			        <div id="fan-in-out" down="true"></div>
-			        <div id="fan-in-out-2" down="true"></div>
-			        <div id="fan-in-out-3" down="true"></div>
-			        <div id="fan-in-out-4" down="true"></div>
-	    		</div>
-		    </div>
+			<h2>Say Goodbye to Rough Edges</h2>
+			<p>Fay icons are drawn with svg in the browser - this means that they will never be pixelated and are infinitely scalable.</p>
 
-		    <div class="row">
-		    	<div class="col-sm-12">
-		    		<div id="menu1" data-menu-open="false"></div>
-		    		<div id="menu2" data-menu-open="false"></div>
-		    		<div id="menu3" data-menu-open="false" data-size="25"></div>
-		    	</div>
-		    </div>
-	        
-	        <div class="row">
-	        	<div class="col-sm-5">
-	        		<label for="speed">Animation Speed (in milliseconds)</label>
-		        	<div class="input-group">
-		        		<input type="text" name="speed" value="300" class="form-control" id="animation-speed">
-		        		<span class="input-group-btn">
-		        			<button class="btn btn-danger" id="set-animation-speed">Change Speed!</button>
-		        		</span>
-		        	</div>
-	        	</div>
-	        </div>
+			<h2>Fay Plays Nice with Everyone</h2>
+			<p>Fay was built with the wonderful Raphael.js library and with compatibility in mind. Icons will render and animate beautifully on tons of browsers.</p>
 
-	    </div><!-- /.CONTAINER -->
+			<h2>Options, Options, Options</h2>
+			<p>Fay was built to be as creative and flexible as you are. Tons of options can be adjusted right in the html for quick and flexible designs. Your icon library shouldn't lock you in.</p>
+			<p><code>data-fay-scale</code> - Scale the icons to be any size. Default is 50. Number only - do not include px.</p>
+			<p><code>data-fay-stroke</code> - Change the stroke width of the icon. Default is 2. Scales automatically if not declared.</p>
 
-		<script data-main="scripts/main" src="scripts/require.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/rafael.js"></script>
-        <script src="js/icon-shapes.js"></script>
-        <script type="text/javascript" src="js/chevron-animations.js"></script>
-    </body>
+			<div class="fay-menu"></div>
+			<div class="fay-menu fay-menu-spin-open"></div>
+			<div class="fay-menu fay-menu-spin-close fay-menu-fold-open" data-fay-scale="200"></div>
+			<div class="fay-chevron fay-chev-flip-down" data-fay-scale="100" data-fay-stroke="50"></div>
+		</div>
+	
+	</body>
 </html>

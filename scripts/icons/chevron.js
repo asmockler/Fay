@@ -6,6 +6,7 @@ $('.fay-chevron').each(function ( i ){
 
 	var elementScale = $(this).attr('data-fay-scale');
 	var size = elementScale / 50 || 1;
+	var strokeWidth = elementScale / 25 || 2;
 
 	//////////////////
 	// BASIC SHAPES //
@@ -145,33 +146,33 @@ $('.fay-chevron').each(function ( i ){
 
 	path.attr({
 		'stroke-linejoin' : 'round',
-		'stroke-width'    : 2,
+		'stroke-width'    : strokeWidth,
 		'stroke-linecap'  : 'round'
 	});
     
    	// Click and animation logic
 	$(this).on('click', function(){
 		if ( $(this).attr('data-fay-up') == 'true' ){
-			if ( $(this).hasClass('fay-chev-default-down') ) {
+			if ( $(this).hasClass('fay-chev-default-down') || $(this).hasClass('fay-chev-default') ) {
     			chevronDefaultDown(path);
-    		} else if ( $(this).hasClass('fay-chev-fan-down') ) {
+    		} else if ( $(this).hasClass('fay-chev-fan-down') || $(this).hasClass('fay-chev-fan') ) {
     			chevronFanDown(path);
-    		} else if ( $(this).hasClass('fay-chev-flip-down') ) {
+    		} else if ( $(this).hasClass('fay-chev-flip-down') || $(this).hasClass('fay-chev-flip') ) {
     			chevronFlipDown(path);
-    		} else if ( $(this).hasClass('fay-chev-spring-down') ) {
+    		} else if ( $(this).hasClass('fay-chev-spring-down') || $(this).hasClass('fay-chev-spring') ) {
     			chevronSpringDown(path);
     		} else {
     			chevronDefaultDown(path);
     		}
 			$(this).attr('data-fay-up', 'false');
 		} else {
-			if ( $(this).hasClass('fay-chev-default-up') ){
+			if ( $(this).hasClass('fay-chev-default-up') || $(this).hasClass('fay-chev-default') ){
     			chevronDefaultUp(path);
-    		} else if ( $(this).hasClass('fay-chev-fan-up') ) {
+    		} else if ( $(this).hasClass('fay-chev-fan-up') || $(this).hasClass('fay-chev-fan') ) {
     			chevronFanUp(path);
-    		} else if ( $(this).hasClass('fay-chev-flip-up') ) {
+    		} else if ( $(this).hasClass('fay-chev-flip-up') || $(this).hasClass('fay-chev-flip') ) {
     			chevronFlipUp(path);
-    		} else if ( $(this).hasClass('fay-chev-spring-up') ){
+    		} else if ( $(this).hasClass('fay-chev-spring-up') || $(this).hasClass('fay-chev-spring') ){
     			chevronSpringUp(path);
     		} else {
     			chevronDefaultUp(path);

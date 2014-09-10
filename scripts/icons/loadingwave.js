@@ -16,35 +16,21 @@ $("[class*='fay-loading-wave'").each(function ( i ){
 	// ANIMATIONS //
 	////////////////
 
-		var waveAnimation = function( element ){
+	var waveAnimation = function( element ){
+		element.animate({
+			cy : 10*size
+		}, 700, 'cubic-bezier(0,0,.5,1)', function(){
 			element.animate({
-				cy : 10*size
-			}, 700, 'cubic-bezier(0,0,.5,1)', function(){
+				cy : 40*size
+			}, 1400, 'cubic-bezier(.6,0,.6,1)', function(){
 				element.animate({
-					cy : 40*size
-				}, 1400, 'cubic-bezier(.6,0,.6,1)', function(){
-					element.animate({
-						cy : 25*size
-					}, 700, 'cubic-bezier(.5,0,1,1)', function(){
-						waveAnimation(element);
-					});
+					cy : 25*size
+				}, 700, 'cubic-bezier(.5,0,1,1)', function(){
+					waveAnimation(element);
 				});
 			});
+		});
 	}
-
-	waveAnimation(circleOne);
-	setTimeout(function(){
-		waveAnimation(circleTwo)
-	}, 150);
-	setTimeout(function(){
-		waveAnimation(circleThree)
-	}, 300);
-	setTimeout(function(){
-		waveAnimation(circleFour)
-	}, 450);
-	setTimeout(function(){
-		waveAnimation(circleFive)
-	}, 600);
 
 	////////////////////////
 	// INITIALIZE DRAWING //
@@ -65,5 +51,19 @@ $("[class*='fay-loading-wave'").each(function ( i ){
 			'stroke-width'    : strokeWidth,
 		});
 	});
+
+	waveAnimation(circleOne);
+	setTimeout(function(){
+		waveAnimation(circleTwo)
+	}, 150);
+	setTimeout(function(){
+		waveAnimation(circleThree)
+	}, 300);
+	setTimeout(function(){
+		waveAnimation(circleFour)
+	}, 450);
+	setTimeout(function(){
+		waveAnimation(circleFive)
+	}, 600);
 
 });

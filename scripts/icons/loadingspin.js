@@ -1,4 +1,4 @@
-$("[class*='fay-loading'").each(function ( i ){
+$("[class*='fay-loading-spin'").each(function ( i ){
 
 	/////////////////////
 	// DECLARING SCALE //
@@ -12,154 +12,151 @@ $("[class*='fay-loading'").each(function ( i ){
 		var strokeWidth = elementScale / 25 || 2;
 	}
 
-	//////////////////
-	// BASIC SHAPES //
-	//////////////////
-
-	var loadingCircle = '';
-	var loadingWave = '';
-
-	////////////////
-	// ANIMATIONS //
-	////////////////
-
-	var menuDefaultOpen = function ( paper ){
-		paper.animate({
-			path: menuBars,
-			transform: 'r0'
-		}, 0, function(){
-			paper.animate({
-				transform: 'R180'
-			}, 0, function(){
-				paper.animate({
-					path: menuX,
-					transform: 'r0'
-				}, 300, function(){
-					paper.animate({
-						transform: 'R180'
-					});
-				});
-			});
-		});
-	}
-
-	var menuDefaultClose = function ( paper ){
-		paper.animate({
-			path: menuX,
-			transform: 'R180'
-		}, 0, function(){
-			paper.animate({
-				path: menuBars,
-				transform: 'r0'
-			}, 300, function(){
-				paper.animate({
-					transform: 'R180'
-				});
-			});
-		});
-	}
-
-	var menuSpinOpen = function ( paper ){
-		paper.animate({
-			transform: 'R0'
-		}, 0, function(){
-			paper.animate({
-				path: menuX,
-				transform:'R180'
-			}, 300, '<>', function(){
-				paper.animate({
-					transform:'R0'
-				}, 0);
-			});
-		});
-	}
-
-	var menuSpinClose = function ( paper ){
-		paper.animate({
-			transform: 'R180'
-		}, 0, function(){
-			paper.animate({
-				path: menuBars,
-				transform: 'R0'
-			}, 300, '<>')
-		})	
-	}
-
-	var menuFoldOpen = function ( paper ){
-		paper.animate({
-			path: 'M ' + 25*size + ' ' + 10*size + ' ' + ' l ' +  0 + ' ' + 30*size + ' M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size + ' M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size
-		}, 150, '<>', function() {
-			paper.animate({
-				path: 'M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size + ' M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size
-			}, 0, function(){
-				paper.animate({
-					path: menuX
-				}, 150);
-			});
-		});
-	}
-
-	var menuFoldClose = function ( paper ){
-		paper.animate({
-			path: menuBars
-		}, 150)
-	}
-
 	////////////////////////
 	// INITIALIZE DRAWING //
 	////////////////////////
 
 	var paper = Raphael($(this)[0], 50*size, 50*size)
 
-	// Draws Menu Icon or X depending on data-fay-open attribute
-	if ( $(this).attr('data-fay-open') == "true" ){
-		var path = paper.path(menuX).transform('R180')
-	} else {
-    	var path = paper.path(menuBars)
+	var circleOne = paper.circle(25, 5, 2);
+	var circleTwo = paper.circle(40, 10, 2);
+	var circleThree = paper.circle(45, 25, 2);
+	var circleFour = paper.circle(40, 40, 2);
+	var circleFive = paper.circle(25, 45, 2);
+	var circleSix = paper.circle(10, 40, 2);
+	var circleSeven = paper.circle(5, 25, 2);
+	var circleEight = paper.circle(10, 10, 2);
+
+	paper.forEach(function (el) {
+		el.attr({
+			'fill' : '#000',
+			'stroke-width'    : strokeWidth,
+		});
+	});
+
+	////////////////
+	// ANIMATIONS //
+	////////////////
+
+	var circleOneAnim = function(){
+		circleOne.animate({
+			cx : 40,
+			cy : 10
+		}, 500, 'cubic-bezier(.42,0,.58,1)', function(){
+			this.animate({
+				cx : 25,
+				cy : 5
+			}, 0, function(){
+				circleOneAnim();
+			})
+		});
 	}
 
-	path.attr({
-		'stroke-linejoin' : 'round',
-		'stroke-width'    : strokeWidth,
-		'stroke-linecap'  : 'round'
-	});
-    
-   	// Click and animation logic
-	$(this).on('click', function(){
-		if ( $(this).attr('data-fay-open') == 'true' ){
-			if ( $(this).hasClass('fay-menu-spin-close') ){
-				menuSpinClose(path);
-			} else if ($(this).hasClass('fay-menu-fold-close') ){
-				menuFoldClose(path);
-			} else if ( $(this).hasClass('fay-menu-default-close') ) {
-    			menuDefaultClose(path);
-    		} else if ( $(this).hasClass('fay-menu-spin') ) {
-				menuSpinClose(path);    			
-    		} else if ( $(this).hasClass('fay-menu-fold') ) {
-				menuFoldClose(path);
-    		} else if ( $(this).hasClass('fay-menu-default') ) {
-				menuDefaultClose(path);
-    		} else {
-    			menuDefaultClose(path);
-    		}
-			$(this).attr('data-fay-open', 'false');
-		} else {
-			if ( $(this).hasClass('fay-menu-spin-open') ){
-				menuSpinOpen(path);
-			} else if ($(this).hasClass('fay-menu-fold-open') ){
-				menuFoldOpen(path);
-			} else if ( $(this).hasClass('fay-menu-default-open') ) {
-    			menuDefaultOpen(path);
-    		} else if ( $(this).hasClass('fay-menu-spin') ) {
-				menuSpinOpen(path);    			
-    		} else if ( $(this).hasClass('fay-menu-fold') ) {
-				menuFoldOpen(path);
-    		} else if ( $(this).hasClass('fay-menu-default') ) {
-				menuDefaultOpen(path);
-    		} else {
-    			menuDefaultOpen(path);
-    		}
-    		$(this).attr('data-fay-open', 'true');
-		}
-	});
+	var circleTwoAnim = function(){
+		circleTwo.animate({
+			cx : 45,
+			cy : 25,
+		}, 500,'cubic-bezier(.42,0,.58,1)', function(){
+			this.animate({
+				cx : 40,
+				cy : 10
+			}, 0, function(){
+				circleTwoAnim();
+			})
+		});
+	}
+
+	var circleThreeAnim = function(){
+		circleThree.animate({
+			cx : 40,
+			cy : 40,
+		}, 500, 'cubic-bezier(.42,0,.58,1)', function(){
+			this.animate({
+				cx : 45,
+				cy : 25
+			}, 0, function(){
+				circleThreeAnim();
+			})
+		});
+	}
+
+	var circleFourAnim = function(){
+		circleFour.animate({
+			cx : 25,
+			cy : 45
+		}, 500, 'cubic-bezier(.42,0,.58,1)', function(){
+			this.animate({
+				cx : 40,
+				cy : 40
+			}, 0, function(){
+				circleFourAnim();
+			})
+		});
+	}
+
+	var circleFiveAnim = function(){
+		circleFive.animate({
+			cx : 10,
+			cy : 40,
+		}, 500, 'cubic-bezier(.42,0,.58,1)', function(){
+			this.animate({
+				cx : 25,
+				cy : 45
+			}, 0, function(){
+				circleFiveAnim();
+			})
+		});
+	}
+
+	var circleSixAnim = function(){
+		circleSix.animate({
+			cx : 5,
+			cy : 25,
+		}, 500, 'cubic-bezier(.42,0,.58,1)', function(){
+			this.animate({
+				cx : 10,
+				cy : 40
+			}, 0, function(){
+				circleSixAnim();
+			})
+		});
+	}
+
+	var circleSevenAnim = function(){
+		circleSeven.animate({
+			cx : 10,
+			cy : 10,
+		}, 500, function(){
+			this.animate({
+				cx : 5,
+				cy : 25
+			}, 0, 'cubic-bezier(.42,0,.58,1)', function(){
+				circleSevenAnim();
+			})
+		});
+	}
+
+	var circleEightAnim = function(){
+		circleEight.animate({
+			cx : 25,
+			cy : 5,
+		}, 500, function(){
+			this.animate({
+				cx : 10,
+				cy : 10
+			}, 0, 'cubic-bezier(.42,0,.58,1)', function(){
+				circleEightAnim();
+			})
+		});
+	}
+
+	circleOneAnim();
+	circleTwoAnim();
+	circleThreeAnim();
+	circleFourAnim();
+	circleFiveAnim();
+	circleSixAnim();
+	circleSevenAnim();
+	circleEightAnim();
+
 });

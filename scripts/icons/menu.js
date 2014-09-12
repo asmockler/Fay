@@ -105,6 +105,34 @@ $("[class*='fay-menu'").each(function ( i ){
 		}, 150)
 	}
 
+	var menuFloatOpen = function ( paper ){
+		paper.animate({
+			path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
+		}, 200, '<>', function(){
+			paper.animate({
+				path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0				
+			}, 0, function(){
+				paper.animate({
+					path: menuX
+				}, 200, '<>');
+			});
+		});
+	}
+
+	var menuFloatClose = function ( paper ){
+		paper.animate({
+			path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
+		}, 200, '<>', function(){
+			paper.animate({
+				path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
+			}, 0, function(){
+				paper.animate({
+					path: 'M ' + 5*size + ' ' + 15*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 35*size + ' l ' + 40*size + ' ' + 0
+				}, 200, '<>');
+			});
+		});
+	}
+
 	////////////////////////
 	// INITIALIZE DRAWING //
 	////////////////////////
@@ -129,14 +157,18 @@ $("[class*='fay-menu'").each(function ( i ){
 		if ( $(this).attr('data-fay-open') == 'true' ){
 			if ( $(this).hasClass('fay-menu-spin-close') ){
 				menuSpinClose(path);
-			} else if ($(this).hasClass('fay-menu-fold-close') ){
+			} else if ( $(this).hasClass('fay-menu-fold-close') ){
 				menuFoldClose(path);
 			} else if ( $(this).hasClass('fay-menu-default-close') ) {
     			menuDefaultClose(path);
+    		} else if ( $(this).hasClass('fay-menu-float-close') ){
+    			menuFloatClose(path);
     		} else if ( $(this).hasClass('fay-menu-spin') ) {
 				menuSpinClose(path);    			
     		} else if ( $(this).hasClass('fay-menu-fold') ) {
 				menuFoldClose(path);
+    		} else if ( $(this).hasClass('fay-menu-float') ){
+    			menuFloatClose(path);
     		} else if ( $(this).hasClass('fay-menu-default') ) {
 				menuDefaultClose(path);
     		} else {
@@ -150,10 +182,14 @@ $("[class*='fay-menu'").each(function ( i ){
 				menuFoldOpen(path);
 			} else if ( $(this).hasClass('fay-menu-default-open') ) {
     			menuDefaultOpen(path);
+    		} else if ( $(this).hasClass('fay-menu-float-open') ) {
+
     		} else if ( $(this).hasClass('fay-menu-spin') ) {
 				menuSpinOpen(path);    			
     		} else if ( $(this).hasClass('fay-menu-fold') ) {
 				menuFoldOpen(path);
+    		} else if ( $(this).hasClass('fay-menu-float') ) {
+    			menuFloatOpen(path);
     		} else if ( $(this).hasClass('fay-menu-default') ) {
 				menuDefaultOpen(path);
     		} else {

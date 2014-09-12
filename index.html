@@ -12,25 +12,91 @@
 	</head>
 	<body>
 
-		<div class="container" style="height:1000px;">
-			<div class="row"><h1><small>Production Ready</small></h1></div>
-			<div  class="row">
-				<span class="fay-menu col-md-1"></span>
-				<span class="col-md-1 fay-menu-spin fay-menu-fold-open"></span>
-				<span class="col-md-1 fay-menu-fold"></span>
-				<span class="col-md-1 fay-menu-spin fay-menu-default-open"></span>
+		<div class="container" style="min-height:1000px;margin-bottom:250px">
+			<div class="row">
+				<h2>Tests</h2>
+				<span class="col-md-1 fay-loading-wave"></span>
+				<span class="col-md-1 fay-loading-spin"></span>
+			</div>
+
+			<div class="row">
+				<h2>Finished</h2>
+					<code>Classes</code>
+					<code class="attr">Attributes</code>
+					<p>In bootstrap buttons, line-height may need to be set to 0</p>
+				<p class="lead">Global Attributes</p>
+					<li><code class="attr">data-fay-scale</code> Default is 50 (in px, don't use units)</li>
+					<li><code class="attr">data-fay-stroke</code> with 2 as default (in px, don't use units)</li>
+					<li><code class="attr">data-fay-color</code> defaults to the color of the <code>&lt;p&gt;</code> element.</li>
+				<br/>
+				<p class="lead">Colors</p>
+					<p>Fay's color will be set to whatever is decalred for the <code>&lt;p&gt;</code> element by default. Colors can be changed via css or data-attribute.</p>
+					<p><strong>Via css</strong></p>
+					<p>Change the color of any of Fay's classes to globally change color for the elements.</p>
+					<pre>.fay-menu-spin{	color: 'red'; }</pre>
+					<p><strong>Via data-attribute</strong></p>
+					<p>Fay comes built in with a data-fay-color attribute to change colors of individual elements.</p>
+			</div>
+
+			<div class="row">
+				<h3>Menu</h3>
+			</div>
+			<div  class="row text-center">
+				<span class="fay-menu col-md-1"><p>Default</p></span>
+				<span class="col-md-1 fay-menu-spin"><p>Spin</p></span>
+				<span class="col-md-1 fay-menu-fold"><p>Fold</p></span>
+				<!-- <span class="col-md-1 fay-menu-spin fay-menu-default-open"></span> -->
+
 			</div>
 			<div class="row">
-				<span class="fay-chevron col-md-1"></span>
-				<span class="fay-chevron-flip col-md-1"></span>
-				<span class="fay-chevron-spring col-md-1"></span>
-				<span class="fay-chevron-fan col-md-1"></span>
+				<p>Options</p>
+				<ul>
+					<li><code>fay-menu</code>, <code>fay-menu-default</code>, <code>fay-menu-spin</code>, or <code>fay-menu-fold</code></li>
+					<li><code>fay-menu-spin-open</code>, <code>fay-menu-fold-close</code>, etc.</li>
+					<li><code class="attr">data-fay-scale</code> with 50 as default (in px, don't use units)</li>
+					<li><code class="attr">data-fay-stroke</code> with 2 as default (in px, don't use units)</li>
+				</ul>
+			</div>
+
+			<div class="row">
+				<h3>Chevrons</h3>
+			</div>
+			<div class="row text-center">
+				<span class="fay-chevron col-md-1"><p>Default</p></span>
+				<span class="fay-chevron-flip col-md-1"><p>Flip</p></span>
+				<span class="fay-chevron-spring col-md-1"><p>Spring</p></span>
+				<span class="fay-chevron-fan col-md-1"><p>Fan</p></span>
 			</div>
 			<div class="row">
-				<span class="col-md-12"><h1><small>Tests</small></h1></span>
-				<!-- <span class="col-md-1 fay-loading-wave"></span> -->
-				<!-- <span class="col-md-1 fay-loading-spin"></span> -->
-				<button class="btn btn-default fay-caret"> Drop it like its hot</button>
+				<p>Options</p>
+				<ul>
+					<li><code>fay-chevron</code>, <code>fay-chevron-default</code>, <code>fay-chevron-flip</code>, <code>fay-chevron-spring</code> or <code>fay-chevron-fan</code></li>
+					<li><code>fay-chevron-flip-open</code>, <code>fay-chevron-default-close</code>, etc.</li>
+					<li><code class="attr">data-fay-scale</code> with 50 as default (in px, don't use units)</li>
+					<li><code class="attr">data-fay-stroke</code> with 2 as default (in px, don't use units)</li>
+				</ul>
+			</div>
+
+			<div class="row">
+				<h3>Carets</h3>
+			</div>
+			<div class="row text-center">
+				<span class="col-md-1 fay-caret-spin"><p>Spin 90&deg;</p></span>
+				<span class="col-md-1 fay-caret-spin-down"><p>Spin 180&deg;</p></span>
+				<span class="col-md-1 fay-caret-flip"><p>Flip 90&deg;</p></span>
+				<span class="col-md-1 fay-caret-flip-down"><p>Flip 180&deg;</p></span>
+				<!-- <span class="col-md-1 fay-caret-flip"><p>Flip</p></span> -->
+			</div>
+			<div class="row">
+				<p>Options</p>
+				<ul>
+					<li><code>fay-caret</code> (default points right and spins 90&deg;), <code>fay-caret-flip</code></li>
+					<li><code>fay-caret-spin-[starting direction]</code> i.e. <code>fay-caret-spin-down</code></li>
+					<li><code>fay-caret-flip-[starting direction]</code> i.e. <code>fay-caret-flip-down</code></li>
+					<li><code class="attr">data-fay-destination</code></li>
+					<li><code class="attr">data-fay-scale</code> <strong>Carets are smaller by default and come prescaled at 1/4 the size of other elements. Default is, then, 12.5.</strong></li>
+					<li><code class="attr">data-fay-stroke</code></li>
+				</ul>
 			</div>
 		</div>
 
@@ -95,7 +161,7 @@
 
 			<h2>Need it inside an element? Yeah, Fay does that, too.</h2>
 			<p>Here is an example with a bootstrap button: <pre>&lt;button class="btn btn-default fay-caret"&gt; Drop it like it's hot &lt;/button&gt;</pre> renders this:</p>
-			<button class="btn btn-default fay-caret"> Drop it like it's hot</button>
+			<button class="btn btn-default fay-caret-flip"> Drop it like it's hot</button>
 
 			<div class="fay-menu"></div>
 			<div class="fay-menu fay-menu-spin-open"></div>

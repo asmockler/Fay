@@ -6,11 +6,17 @@ $("[class*='fay-menu'").each(function ( i ){
 
 	var elementScale = $(this).attr('data-fay-scale');
 	var size = elementScale / 50 || 1;
+	var strokeWidth;
 	if ( $(this).attr('data-fay-stroke') ) {
 		var strokeWidth = $(this).attr('data-fay-stroke')
 	} else {
-		var strokeWidth = elementScale / 25 || 2;
+		if ( (elementScale / 25) < 2 ){
+			strokeWidth = 2
+		} else {
+			strokeWidth = elementScale / 25 || 2;
+		}
 	}
+	console.log(strokeWidth)
 
 	/////////////////////
 	// ANIMATION SPEED //

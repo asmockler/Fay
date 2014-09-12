@@ -4,8 +4,14 @@ $("[class*='fay-menu'").each(function ( i ){
 	// DECLARING SCALE //
 	/////////////////////
 
-	var elementScale = $(this).attr('data-fay-scale');
-	var size = elementScale / 50 || 1;
+	var size;
+	if ( $(this).attr('data-fay-size') ){
+		var elementScale = $(this).attr('data-fay-size');
+		size = elementScale / 50 || 1;
+	} else {
+		console.error('Something is seriously wrong here. You screwed up the scale, bub.')
+	}
+
 	var strokeWidth;
 	if ( $(this).attr('data-fay-stroke') ) {
 		var strokeWidth = $(this).attr('data-fay-stroke')
@@ -16,7 +22,6 @@ $("[class*='fay-menu'").each(function ( i ){
 			strokeWidth = elementScale / 25 || 2;
 		}
 	}
-	console.log(strokeWidth)
 
 	/////////////////////
 	// ANIMATION SPEED //

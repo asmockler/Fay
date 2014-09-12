@@ -4,9 +4,15 @@ $("[class*='fay-caret'").each(function ( i ){
 	// DECLARING SPECIAL SCALE //
 	/////////////////////////////
 
-	var elementScale = $(this).attr('data-fay-scale');
-	var size = elementScale / 200 || .25;
+	var size;
+	if ( $(this).attr('data-fay-size') ){
+		var elementScale = $(this).attr('data-fay-size');
+		size = elementScale / 150 || 1;
+	} else {
+		console.error('Something is seriously wrong here. You screwed up the scale, bub.')
+	}
 	var caret = $(this);
+
 
 	/////////////////////
 	// ANIMATION SPEED //

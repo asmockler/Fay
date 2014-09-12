@@ -4,12 +4,22 @@ $("[class*='fay-chevron'").each(function ( i ){
 	// DECLARING SCALE //
 	/////////////////////
 
-	var elementScale = $(this).attr('data-fay-scale');
-	var size = elementScale / 50 || 1;
+	var size;
+	if ( $(this).attr('data-fay-size') ){
+		var elementScale = $(this).attr('data-fay-size');
+		size = elementScale / 50 || 1;
+	} else {
+		console.error('Something is seriously wrong here. You screwed up the scale, bub.')
+	}
+	var strokeWidth;
 	if ( $(this).attr('data-fay-stroke') ) {
 		var strokeWidth = $(this).attr('data-fay-stroke')
 	} else {
-		var strokeWidth = elementScale / 25 || 2;
+		if ( (elementScale / 25) < 2 ){
+			strokeWidth = 2
+		} else {
+			strokeWidth = elementScale / 25 || 2;
+		}
 	}
 
 	/////////////////////

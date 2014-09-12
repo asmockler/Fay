@@ -12,10 +12,10 @@ $("[class*='fay-caret'").each(function ( i ){
 	// BASIC SHAPES //
 	//////////////////
 
-	var caretDown = 'M ' + 0 + ' ' + 5*size + ' l ' + 25*size + ' ' + 43*size + ' l ' + 25*size + ' ' + -43*size + ' z';
-	var caretRight = 'M ' + 5*size + ' ' + 0 + ' l ' + 43*size + ' ' + 25*size + ' l ' + -43*size + ' ' + 25*size + ' z';
-	var caretUp = 'M ' + 0 + ' ' + 45*size + ' l ' + 25*size + ' ' + -43*size + ' l ' + 25*size + ' ' + 43*size + ' z';
-	var caretLeft = 'M ' + 0 + ' ' + 5*size + ' l ' + 25*size + ' ' + 43*size + ' l ' + 25*size + ' ' + -43*size + ' z';	
+	var caretDown = 'M ' + 0 + ' ' + 0 + ' l ' + 24*size + ' ' + 42*size + ' l ' + 24*size + ' ' + -42*size + ' z';
+	var caretRight = 'M ' + 0 + ' ' + 0 + ' l ' + 42*size + ' ' + 24*size + ' l ' + -42*size + ' ' + 24*size + ' z';
+	var caretUp = 'M ' + 0 + ' ' + 50*size + ' l ' + 24*size + ' ' + -42*size + ' l ' + 24*size + ' ' + 42*size + ' z';
+	var caretLeft = 'M ' + 50*size + ' ' + 0 + ' l ' + -42*size + ' ' + 24*size + ' l ' + 42*size + ' ' + 24*size + ' z';	
 	var caretSpin = 'M ' + 8*size + ' ' + 5*size + ' l ' + 34*size + ' ' + 20*size + ' l ' + -34*size + ' ' + 20*size + ' z';
 
 	////////////////
@@ -166,7 +166,8 @@ $("[class*='fay-caret'").each(function ( i ){
 	}
 
 	path.attr({
-		'fill'            : '#000000'
+		'fill'            : '#000000',
+		'stroke-width'          : '0'
 	}).transform('R' + startingRotation);
 
 });

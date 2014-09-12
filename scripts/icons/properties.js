@@ -1,15 +1,23 @@
 var fay = $("[class*='fay-']").find('svg');
 
-fay.each(function ( i ){
-	var path = $(this).find('path, circle');
-	var defaultColor = $('p').css('color');
+var getDefaultColor = function( el ){
+	if ( el.attr('data-fay-color') ){
+		return el.attr('data-fay-color');
+	} else {
+		return el.css('color');
+	}
+}
 
-	console.log(defaultColor);
+fay.each(function ( i ){
+	var elParent = $(this).parent("[class*='fay-']");
+	var path = $(this).find('path, circle');
+	var defaultColor = getDefaultColor(elParent);
 
 	$(this).css({
 		'cursor' : 'pointer',
 	});
 
+	// Ensure items without fills don't get filled in
 	if ( path.css('fill') == "rgb(0, 0, 0)" ){
 		path.css({
 			'fill' : defaultColor

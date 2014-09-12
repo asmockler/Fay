@@ -8,6 +8,12 @@ $("[class*='fay-caret'").each(function ( i ){
 	var size = elementScale / 200 || .25;
 	var caret = $(this);
 
+	/////////////////////
+	// ANIMATION SPEED //
+	/////////////////////
+
+	var animationSpeed = $(this).attr('data-fay-speed') || 300;
+
 	//////////////////
 	// BASIC SHAPES //
 	//////////////////
@@ -28,7 +34,7 @@ $("[class*='fay-caret'").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: end,
-			}, 300, 'cubic-bezier(.82,.32,.51,.93)');
+			}, animationSpeed, 'cubic-bezier(.82,.32,.51,.93)');
 		});
 	}
 
@@ -41,7 +47,7 @@ $("[class*='fay-caret'").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				transform: 'R' + trueRotation,
-			}, 300, 'cubic-bezier(.82,.32,.51,.93)');
+			}, animationSpeed, 'cubic-bezier(.82,.32,.51,.93)');
 		});
 	}
 

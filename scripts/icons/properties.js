@@ -26,15 +26,14 @@ fay.each(function ( i ){
 
 	path.css({
 		'stroke' : defaultColor
-	});
-	
+	});	
 });
 
 
 // TODO
-// Colors via css and data-attr
+// Set animation speed
 // Add stroke scaling
-// Add spinners
+// Fix spinners
 // Play to pause
 // Allow for declaring units (convert px to rem, etc)
-// Set animation speed
+// Check for unnecessary animation steps (chevrons especially)

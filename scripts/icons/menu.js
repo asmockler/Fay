@@ -12,6 +12,12 @@ $("[class*='fay-menu'").each(function ( i ){
 		var strokeWidth = elementScale / 25 || 2;
 	}
 
+	/////////////////////
+	// ANIMATION SPEED //
+	/////////////////////
+
+	var animationSpeed = $(this).attr('data-fay-speed') || 300;
+
 	//////////////////
 	// BASIC SHAPES //
 	//////////////////
@@ -34,7 +40,7 @@ $("[class*='fay-menu'").each(function ( i ){
 				paper.animate({
 					path: menuX,
 					transform: 'r0'
-				}, 300, function(){
+				}, animationSpeed, function(){
 					paper.animate({
 						transform: 'R180'
 					});
@@ -51,7 +57,7 @@ $("[class*='fay-menu'").each(function ( i ){
 			paper.animate({
 				path: menuBars,
 				transform: 'r0'
-			}, 300, function(){
+			}, animationSpeed, function(){
 				paper.animate({
 					transform: 'R180'
 				});
@@ -66,7 +72,7 @@ $("[class*='fay-menu'").each(function ( i ){
 			paper.animate({
 				path: menuX,
 				transform:'R180'
-			}, 300, '<>', function(){
+			}, animationSpeed, '<>', function(){
 				paper.animate({
 					transform:'R0'
 				}, 0);
@@ -81,20 +87,20 @@ $("[class*='fay-menu'").each(function ( i ){
 			paper.animate({
 				path: menuBars,
 				transform: 'R0'
-			}, 300, '<>')
+			}, animationSpeed, '<>')
 		})	
 	}
 
 	var menuFoldOpen = function ( paper ){
 		paper.animate({
 			path: 'M ' + 25*size + ' ' + 10*size + ' ' + ' l ' +  0 + ' ' + 30*size + ' M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size + ' M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size
-		}, 150, '<>', function() {
+		}, animationSpeed*.5, '<>', function() {
 			paper.animate({
 				path: 'M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size + ' M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size
 			}, 0, function(){
 				paper.animate({
 					path: menuX
-				}, 150);
+				}, animationSpeed*.5);
 			});
 		});
 	}
@@ -102,19 +108,19 @@ $("[class*='fay-menu'").each(function ( i ){
 	var menuFoldClose = function ( paper ){
 		paper.animate({
 			path: menuBars
-		}, 150)
+		}, animationSpeed*.5)
 	}
 
 	var menuFloatOpen = function ( paper ){
 		paper.animate({
 			path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
-		}, 200, '<>', function(){
+		}, animationSpeed*.5, '<>', function(){
 			paper.animate({
 				path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0				
 			}, 0, function(){
 				paper.animate({
 					path: menuX
-				}, 200, '<>');
+				}, animationSpeed*.5, '<>');
 			});
 		});
 	}
@@ -122,13 +128,13 @@ $("[class*='fay-menu'").each(function ( i ){
 	var menuFloatClose = function ( paper ){
 		paper.animate({
 			path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
-		}, 200, '<>', function(){
+		}, animationSpeed*.5, '<>', function(){
 			paper.animate({
 				path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
 			}, 0, function(){
 				paper.animate({
 					path: 'M ' + 5*size + ' ' + 15*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 35*size + ' l ' + 40*size + ' ' + 0
-				}, 200, '<>');
+				}, animationSpeed*.5, '<>');
 			});
 		});
 	}

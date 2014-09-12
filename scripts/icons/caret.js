@@ -1,9 +1,8 @@
 $("[class*='fay-caret'").each(function ( i ){
 
-	/////////////////////
-	// DECLARING SCALE //
-	/////////////////////
-
+	/////////////////////////////
+	// DECLARING SPECIAL SCALE //
+	/////////////////////////////
 
 	var elementScale = $(this).attr('data-fay-scale');
 	var size = elementScale / 200 || .25;
@@ -14,53 +13,160 @@ $("[class*='fay-caret'").each(function ( i ){
 	//////////////////
 
 	var caretDown = 'M ' + 0 + ' ' + 5*size + ' l ' + 25*size + ' ' + 43*size + ' l ' + 25*size + ' ' + -43*size + ' z';
-	var caretRight = 'M ' + 5*size + ' ' + 0 + ' l ' + 43*size + ' ' + 25*size + ' l ' + -43*size + ' ' + 25*size + ' z'
+	var caretRight = 'M ' + 5*size + ' ' + 0 + ' l ' + 43*size + ' ' + 25*size + ' l ' + -43*size + ' ' + 25*size + ' z';
+	var caretUp = 'M ' + 0 + ' ' + 45*size + ' l ' + 25*size + ' ' + -43*size + ' l ' + 25*size + ' ' + 43*size + ' z';
+	var caretLeft = 'M ' + 0 + ' ' + 5*size + ' l ' + 25*size + ' ' + 43*size + ' l ' + 25*size + ' ' + -43*size + ' z';	
+	var caretSpin = 'M ' + 8*size + ' ' + 5*size + ' l ' + 34*size + ' ' + 20*size + ' l ' + -34*size + ' ' + 20*size + ' z';
 
 	////////////////
 	// ANIMATIONS //
 	////////////////
 
-	var rightToDown = function ( paper ){
+	var flip = function ( paper, start, end ){
 		paper.animate({
-			path: caretRight
+			path: start
 		}, 0, function(){
 			paper.animate({
-				path: caretDown,
+				path: end,
 			}, 300, 'cubic-bezier(.82,.32,.51,.93)');
-			caret.attr('direction', 'down');
 		});
 	}
 
-	var downToRight = function ( paper ){
+	var spin = function ( paper, start, rotation ){
+		var trueRotation = parseInt(rotation, 10) + parseInt(start, 10);
+
 		paper.animate({
-			path: caretDown
+			path: caretSpin,
+			transform: 'R' + start
 		}, 0, function(){
 			paper.animate({
-				path: caretRight
+				transform: 'R' + trueRotation,
 			}, 300, 'cubic-bezier(.82,.32,.51,.93)');
-			caret.attr('direction', 'right');
 		});
 	}
 
+	///////////////////////////////
+	// GET CARET CHARACTERISTICS //
+	///////////////////////////////
+
+	var findStartingRotation = function( el ) {
+		var check = function ( c ){
+			var result = el.hasClass( c );
+			return result
+		}
+
+		if ( check('fay-caret-spin-down') || check('fay-caret-down') ){
+			return 90;
+		} else if ( check('fay-caret-spin-left') || check('fay-caret-left') ){
+			return 180;
+		} else if ( check('fay-caret-spin-up') || check('fay-caret-up') ){
+			return 270;
+		} else if ( check('fay-caret-spin-right') || check('fay-caret-right') ){
+			return 0;
+		} else {
+			return 0;
+		}
+	}
+
+	var findRotationAmount = function( attr, start ){
+		var check = function ( c ){
+			return attr == c;
+		}
+
+		if ( check('down') ){ return 90 - parseInt(start, 10) } 
+		else if ( check('left') ) { return 180 - parseInt(start, 10) } 
+		else if ( check('up') ) { return 270 - parseInt(start, 10) } 
+		else if ( check('right') ) { return 0 - parseInt(start, 10) } 
+		else {
+			if ( startingRotation == 90 ){ return 180 }
+			else if ( startingRotation == 180 ){ return 90 }
+			if ( startingRotation == 270 ){ return 180 }
+			else if ( startingRotation == 0 ){ return 90 }
+		}
+	}
+
+	var findFlipDirection = function (el){
+		var check = function ( c ){
+			var result = el.hasClass( c );
+			return result
+		}
+
+		if ( check('fay-caret-flip-down') ){
+			return caretDown;
+		} else if ( check('fay-caret-flip-left') ){
+			return caretLeft;
+		} else if ( check('fay-caret-flip-up') ){
+			return caretUp;
+		} else if ( check('fay-caret-flip-right') ){
+			return caretRight;
+		} else {
+			return caretRight;
+		}
+	}
+
+	var findFlipDestination = function (attr){
+		var check = function ( c ){
+			return attr == c;
+		}
+
+		if ( check('down') ){ return caretDown } 
+		else if ( check('left') ) { return caretLeft } 
+		else if ( check('up') ) { return caretUp } 
+		else if ( check('right') ) { return caretRight } 
+		else {
+			if ( flipDirection == caretDown ){ return caretUp }
+			else if ( flipDirection == caretLeft ){ return caretUp }
+			if ( flipDirection == caretUp ){ return caretDown }
+			else if ( flipDirection == caretRight ){ return caretDown }
+		}
+	}
+
+	var startingRotation = findStartingRotation(caret);
+	var rotationAmount = findRotationAmount( caret.attr('fay-destination'), startingRotation );
+	var flipDirection = findFlipDirection(caret);
+	var flipDestination = findFlipDestination( caret.attr('fay-destination'), startingRotation );
 
 	////////////////////////
 	// INITIALIZE DRAWING //
 	////////////////////////
 
 	var paper = Raphael($(this)[0], 50*size, 50*size);
-	var path = paper.path(caretRight);
+
+	if( $(this).hasClass('fay-caret-spin-down') || $(this).hasClass('fay-caret-spin-left') || $(this).hasClass('fay-caret-spin-right') || $(this).hasClass('fay-caret-spin-up') || $(this).hasClass('fay-caret-spin'))
+	{
+		var path = paper.path(caretSpin);
+		$(this).on('click', function(){
+			if ( caret.attr('spun') == 'true') {
+				spin(path, parseInt(startingRotation, 10) + parseInt(rotationAmount, 10), -rotationAmount);
+				caret.attr('spun', 'false');
+			} else if ( caret.attr('spun') == 'false' ){
+				spin(path, startingRotation, rotationAmount);
+				caret.attr('spun', 'true');
+			} else {
+				spin(path, startingRotation, rotationAmount);
+				caret.attr('spun', 'true');
+			};
+		});
+	} 
+	else if ( $(this).hasClass('fay-caret-flip') || $(this).hasClass('fay-caret-flip-up') || $(this).hasClass('fay-caret-flip-right') || $(this).hasClass('fay-caret-flip-down') || $(this).hasClass('fay-caret-flip-left') )
+	{
+		var path = paper.path(flipDirection);
+		$(this).on('click', function(){
+			if ( caret.attr('flipped') == 'true' ) {
+				flip(path, flipDestination, flipDirection);
+				caret.attr('flipped', 'false');
+			} else if ( caret.attr('flipped') == 'false' ) {
+				flip(path, flipDirection, flipDestination);
+				caret.attr('flipped', 'true');
+			} else {
+				flip(path, flipDirection, flipDestination);
+				caret.attr('flipped', 'true');
+			}
+		});
+	}
+
 	path.attr({
 		'fill'            : '#000000'
-	}).transform('R0');
-	caret.attr('direction', 'right');
-
-	$(this).on('click', function(){
-		if ( caret.attr('direction') == 'down' ) {
-			downToRight(path);
-		} else if ( caret.attr('direction') == 'right' ) {
-			rightToDown(path);
-		}
-	});
-	
+	}).transform('R' + startingRotation);
 
 });

@@ -8,10 +8,19 @@ var getDefaultColor = function( el ){
 	}
 }
 
+var getOpacity = function( el ){
+	if ( el.attr('data-fay-opacity') ){
+		return el.attr('data-fay-opacity');
+	} else {
+		return el.css('opacity');
+	}
+}
+
 fay.each(function ( i ){
 	var elParent = $(this).parent("[class*='fay-']");
 	var path = $(this).find('path, circle');
 	var defaultColor = getDefaultColor(elParent);
+	var opacity = getOpacity(elParent);
 
 	$(this).css({
 		'cursor' : 'pointer',
@@ -20,20 +29,21 @@ fay.each(function ( i ){
 	// Ensure items without fills don't get filled in
 	if ( path.css('fill') == "rgb(0, 0, 0)" ){
 		path.css({
-			'fill' : defaultColor
+			'fill' : defaultColor,
 		});
 	}
 
 	path.css({
-		'stroke' : defaultColor
+		'stroke' : defaultColor,
+		'opacity' : opacity
 	});	
 });
 
 
 // TODO
-// Set animation speed
-// Add stroke scaling
+// Allow for declaring units (convert px to rem, etc)
+// Finish stroke scaling for chevrons
+// Add opacity to properties
 // Fix spinners
 // Play to pause
-// Allow for declaring units (convert px to rem, etc)
 // Check for unnecessary animation steps (chevrons especially)

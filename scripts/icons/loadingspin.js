@@ -42,7 +42,7 @@ $("[class*='fay-loading-spin'").each(function ( i ){
 		circleOne.animate({
 			cx : 40,
 			cy : 10
-		}, 500, 'cubic-bezier(.42,0,.58,1)', function(){
+		}, 500, 'linear', function(){
 			this.animate({
 				cx : 25,
 				cy : 5
@@ -56,7 +56,7 @@ $("[class*='fay-loading-spin'").each(function ( i ){
 		circleTwo.animate({
 			cx : 45,
 			cy : 25,
-		}, 500,'cubic-bezier(.42,0,.58,1)', function(){
+		}, 500,'linear', function(){
 			this.animate({
 				cx : 40,
 				cy : 10
@@ -70,7 +70,7 @@ $("[class*='fay-loading-spin'").each(function ( i ){
 		circleThree.animate({
 			cx : 40,
 			cy : 40,
-		}, 500, 'cubic-bezier(.42,0,.58,1)', function(){
+		}, 500, 'linear', function(){
 			this.animate({
 				cx : 45,
 				cy : 25
@@ -84,7 +84,7 @@ $("[class*='fay-loading-spin'").each(function ( i ){
 		circleFour.animate({
 			cx : 25,
 			cy : 45
-		}, 500, 'cubic-bezier(.42,0,.58,1)', function(){
+		}, 500, 'linear', function(){
 			this.animate({
 				cx : 40,
 				cy : 40
@@ -98,7 +98,7 @@ $("[class*='fay-loading-spin'").each(function ( i ){
 		circleFive.animate({
 			cx : 10,
 			cy : 40,
-		}, 500, 'cubic-bezier(.42,0,.58,1)', function(){
+		}, 500, 'linear', function(){
 			this.animate({
 				cx : 25,
 				cy : 45
@@ -112,7 +112,7 @@ $("[class*='fay-loading-spin'").each(function ( i ){
 		circleSix.animate({
 			cx : 5,
 			cy : 25,
-		}, 500, 'cubic-bezier(.42,0,.58,1)', function(){
+		}, 500, 'linear', function(){
 			this.animate({
 				cx : 10,
 				cy : 40
@@ -130,7 +130,7 @@ $("[class*='fay-loading-spin'").each(function ( i ){
 			this.animate({
 				cx : 5,
 				cy : 25
-			}, 0, 'cubic-bezier(.42,0,.58,1)', function(){
+			}, 0, 'linear', function(){
 				circleSevenAnim();
 			})
 		});
@@ -144,7 +144,7 @@ $("[class*='fay-loading-spin'").each(function ( i ){
 			this.animate({
 				cx : 10,
 				cy : 10
-			}, 0, 'cubic-bezier(.42,0,.58,1)', function(){
+			}, 0, 'linear', function(){
 				circleEightAnim();
 			})
 		});

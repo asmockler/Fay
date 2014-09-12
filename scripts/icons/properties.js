@@ -39,8 +39,8 @@ fay.each(function ( i ){
 	});	
 });
 
-
 // TODO
+// Fix chevron mix-and-match
 // Allow for declaring units (convert px to rem, etc)
 // Finish stroke scaling for chevrons
 // Add opacity to properties

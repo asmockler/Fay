@@ -33,7 +33,7 @@ $("[class*='fay-chevron'").each(function ( i ){
 	//////////////////
 
 	var chevronDown = 'M ' + 5*size + ' ' + 15*size + ' l ' + 20*size + ' ' + 20*size + ' l ' + 20*size + ' ' + -20*size
-	var chevronUp = 'M ' + 5*size + ' ' + 35*size + ' l ' + 20*size + ' ' + -20*size + ' l ' + 20*size + ' ' + 20*size
+	var chevronUp = 'M ' + 5*size + ' ' + 33*size + ' l ' + 20*size + ' ' + -20*size + ' l ' + 20*size + ' ' + 20*size
 
 	////////////////
 	// ANIMATIONS //

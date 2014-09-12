@@ -7,7 +7,6 @@
 	<title>Fay Test Page</title>
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="public/styles.css">
 	<script src="scripts/lib/require.js" data-main="scripts/main"></script>
 	<style>
 		html{
@@ -91,7 +90,7 @@
 					<li><code>fay-menu</code>, <code>fay-menu-spin</code>, <code>fay-menu-float</code>, <code>fay-menu-fold</code></li>
 					<li>Mix-and-match opening and closing animations i.e. <code>fay-menu-float-open</code> and <code>fay-menu-spin-close</code> <span class="fay-menu-float-open fay-menu-spin-close" data-fay-scale=".75"></span></li>
 				</ul>
-				<h2>Chevron <span class="fay-chevron"></span></h2>
+				<h2>Chevron</h2>
 				<div class="row text-center">
 					<div class="col-md-2 fay-chevron"><p>Default</p></div>
 					<div class="col-md-2 fay-chevron-flip"><p>Flip</p></div>
@@ -163,7 +162,7 @@
 
 
 	<div class="menu">
-		<div class="fay-menu fay-menu-float" data-fay-color="white" data-fay-size="50px"></div>
+		<div class="fay-menu fay-menu-float" data-fay-color="white" data-fay-size="75px" data-fay-opacity=".75"></div>
 	</div>
 	<div class="jumbotron">
 		<div class="container">
@@ -188,12 +187,12 @@
 
 		<h2>Need it inside an element? Yeah, Fay does that, too.</h2>
 		<p>Here is an example with a bootstrap button: <pre>&lt;button class="btn btn-default fay-caret"&gt; Drop it like it's hot &lt;/button&gt;</pre> renders this:</p>
-		<button class="btn btn-default fay-caret-flip"> Drop it like it's hot</button>
+		<button class="btn btn-default fay-chevron" data-fay-size="10"> Drop it like it's hot</button>
 
 		<div class="fay-menu"></div>
 		<div class="fay-menu fay-menu-spin-open"></div>
-		<div class="fay-menu fay-menu-spin-close fay-menu-fold-open" data-fay-scale="200"></div>
-		<div class="fay-chevron fay-chev-flip-down" data-fay-scale="100"></div>
+		<div class="fay-menu fay-menu-float" data-fay-size="200"></div>
+		<div class="fay-chevron fay-chev-flip-down" data-fay-size="100"></div>
 	</div>
 	
 </body>

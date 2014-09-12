@@ -37,6 +37,8 @@ fay.each(function ( i ){
 		'stroke' : defaultColor,
 		'opacity' : opacity
 	});	
+
+	//$(elParent).css('visibility', 'visible');
 });
 
 // TODO

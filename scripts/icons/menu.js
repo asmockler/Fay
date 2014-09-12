@@ -189,7 +189,7 @@ $("[class*='fay-menu'").each(function ( i ){
 			} else if ( $(this).hasClass('fay-menu-default-open') ) {
     			menuDefaultOpen(path);
     		} else if ( $(this).hasClass('fay-menu-float-open') ) {
-
+    			menuFloatOpen(path);
     		} else if ( $(this).hasClass('fay-menu-spin') ) {
 				menuSpinOpen(path);    			
     		} else if ( $(this).hasClass('fay-menu-fold') ) {

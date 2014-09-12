@@ -12,10 +12,8 @@ requirejs.config({
 
 requirejs(['jquery', 'raphael'],
 	function ($,      raphael){
-		requirejs(['menu', 'chevron', 'properties', 'loadingwave', 'loadingspin', 'caret'], function(menu, chevron, properties, loadingwave, loadingspin, caret){
-
-				
-
+		requirejs(['menu', 'chevron', 'loadingwave', 'loadingspin', 'caret'], function(menu, chevron, loadingwave, loadingspin, caret){
+			requirejs(['properties'], function(properties){})
 		});
 });
 

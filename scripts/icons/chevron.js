@@ -173,26 +173,42 @@ $("[class*='fay-chevron'").each(function ( i ){
    	// Click and animation logic
 	$(this).on('click', function(){
 		if ( $(this).attr('data-fay-up') == 'true' ){
-			if ( $(this).hasClass('fay-chevron-default-down') || $(this).hasClass('fay-chevron-default') ) {
+			if ( $(this).hasClass('fay-chevron-default-down') ) {
     			chevronDefaultDown(path);
-    		} else if ( $(this).hasClass('fay-chevron-fan-down') || $(this).hasClass('fay-chevron-fan') ) {
+    		} else if ( $(this).hasClass('fay-chevron-fan-down') ) {
     			chevronFanDown(path);
-    		} else if ( $(this).hasClass('fay-chevron-flip-down') || $(this).hasClass('fay-chevron-flip') ) {
+    		} else if ( $(this).hasClass('fay-chevron-flip-down') ) {
     			chevronFlipDown(path);
-    		} else if ( $(this).hasClass('fay-chevron-spring-down') || $(this).hasClass('fay-chevron-spring') ) {
+    		} else if ( $(this).hasClass('fay-chevron-spring-down') ) {
+    			chevronSpringDown(path);
+    		} else if ( $(this).hasClass('fay-chevron-default') ){ 
+    			chevronDefaultDown(path);
+    		} else if ( $(this).hasClass('fay-chevron-fan') ) {
+    			chevronFanDown(path);
+    		} else if ( $(this).hasClass('fay-chevron-flip') ) {
+    			chevronFlipDown(path);
+    		} else if ( $(this).hasClass('fay-chevron-spring') ) {
     			chevronSpringDown(path);
     		} else {
     			chevronDefaultDown(path);
     		}
 			$(this).attr('data-fay-up', 'false');
 		} else {
-			if ( $(this).hasClass('fay-chev-default-up') || $(this).hasClass('fay-chevron-default') ){
+			if ( $(this).hasClass('fay-chev-default-up') ){
     			chevronDefaultUp(path);
-    		} else if ( $(this).hasClass('fay-chevron-fan-up') || $(this).hasClass('fay-chevron-fan') ) {
+    		} else if ( $(this).hasClass('fay-chevron-fan-up') ) {
     			chevronFanUp(path);
-    		} else if ( $(this).hasClass('fay-chevron-flip-up') || $(this).hasClass('fay-chevron-flip') ) {
+    		} else if ( $(this).hasClass('fay-chevron-flip-up') ) {
     			chevronFlipUp(path);
-    		} else if ( $(this).hasClass('fay-chevron-spring-up') || $(this).hasClass('fay-chevron-spring') ){
+    		} else if ( $(this).hasClass('fay-chevron-spring-up') ){
+    			chevronSpringUp(path);
+    		} else if ( $(this).hasClass('fay-chevron-default') ){
+    			chevronDefaultUp(path);
+    		} else if ( $(this).hasClass('fay-chevron-fan') ) {
+    			chevronFanUp(path);
+    		} else if (  $(this).hasClass('fay-chevron-flip') ) {
+    			chevronFlipUp(path);
+    		} else if ( $(this).hasClass('fay-chevron-spring') ) {
     			chevronSpringUp(path);
     		} else {
     			chevronDefaultUp(path);

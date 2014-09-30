@@ -1,4 +1,4 @@
-$("[class*='fay-chevron']").each(function ( i ){
+$("[class*='fay-play']").each(function ( i ){
 
 	/////////////////////
 	// DECLARING SCALE //

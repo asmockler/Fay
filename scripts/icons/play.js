@@ -32,188 +32,193 @@ $("[class*='fay-play']").each(function ( i ){
 	// BASIC SHAPES //
 	//////////////////
 
-	var chevronDown = 'M ' + 5*size + ' ' + 15*size + ' l ' + 20*size + ' ' + 20*size + ' l ' + 20*size + ' ' + -20*size
-	var chevronUp = 'M ' + 5*size + ' ' + 33*size + ' l ' + 20*size + ' ' + -20*size + ' l ' + 20*size + ' ' + 20*size
+	var play = 'M ' + 10*size + ' ' + 8*size + ' l ' + 28*size + ' ' + 17*size + ' l ' + -28*size + ' ' + 17*size + ' z';
+	var pause = 'M ' + 10*size + ' ' + 10*size + ' l ' + 10*size + ' ' + 0 + ' l ' + 0 + ' ' + 30*size + ' l ' + -10*size + ' ' + 0 + ' l ' + 0 + ' ' + -30*size + ' M ' + 30*size + ' ' + 10*size + ' l ' + 10*size + ' ' + 0 + ' l ' + 0 + ' ' + 30*size + ' l ' + -10*size + ' ' + 0 + ' l ' + 0 + ' ' + -30*size;
+	var pauseOffCanvas = 'M ' + -20*size + ' ' + 5*size + ' l ' + 15*size + ' ' + 0 + ' l ' + 0 + ' ' + 40*size + ' l ' + -15*size + ' ' + 0 + ' l ' + 0 + ' ' + -40*size + ' M ' + 55*size + ' ' + 5*size + ' l ' + 15*size + ' ' + 0 + ' l ' + 0 + ' ' + 40*size + ' l ' + -15*size + ' ' + 0 + ' l ' + 0 + ' ' + -40*size;
+	var nothing = 'M ' + 25*size + ' ' + 25*size + ' l ' + 1 + ' ' + 1;
+	var stop = 'M ' + 11*size + ' ' + 11*size + ' l ' + 28*size + ' ' + 0 + ' l ' + 0 + ' ' + 28*size + ' l ' + -28*size + ' ' + 0 + ' z';
 
 	////////////////
 	// ANIMATIONS //
 	////////////////
 
-	var chevronDefaultUp = function ( paper ){
+	var playToPause = function ( paper ){
 		paper.animate({
-			path: chevronDown
+			path: play
 		}, 0, function(){
 			paper.animate({
-				path: chevronUp
-			}, animationSpeed*.75, '<>');
-		});
-	}
-
-	var chevronDefaultDown = function ( paper ){
-		paper.animate({
-			path: chevronUp
-		}, 0, function(){
-			paper.animate({
-				path: chevronDown
-			}, animationSpeed*.75, '<>');
-		});
-	}
-
-	var chevronFanUp = function ( paper ){
-		paper.animate({
-			path: chevronDown
-		}, 0, function(){
-			paper.animate({
-				path: 'M ' + 25*size + ' ' + 15*size + ' l ' + 0 + ' ' + 20*size + ' l ' + 0 + ' ' + -20*size
-			}, animationSpeed*.5, '<>', function(){
+				path: nothing
+			}, animationSpeed*.5, 'cubic-bezier(.97,.01,.76,.76)', function(){
 				paper.animate({
-					path: 'M ' + 25*size + ' ' + 35*size + ' l ' + 0 + ' ' + -20*size + ' l ' + 0 + ' ' + 20*size
+					path: pause
+				}, animationSpeed*.5, 'cubic-bezier(.23,.23,.01,.99)');
+			});
+		});
+	}
+
+	var pauseToPlay = function ( paper ){
+		paper.animate({
+			path: pause
+		}, 0, function(){
+			paper.animate({
+				path: nothing
+			}, animationSpeed*.5, 'cubic-bezier(.97,.01,.76,.76)', function(){
+				paper.animate({
+					path: play
+				}, animationSpeed*.5, 'cubic-bezier(.23,.23,.01,.99)')
+			});
+		});
+	}
+
+	var playToPauseZoom = function ( paper ){
+		paper.animate({
+			path: play
+		}, 0, function(){
+			paper.animate({
+				path: nothing
+			}, animationSpeed*.5, 'cubic-bezier(.97,.01,.76,.76)', function(){
+				paper.animate({
+					path: pauseOffCanvas
+				}, 0, '<>', function(){
+					paper.animate({
+						path: pause
+					}, animationSpeed*1.5, 'cubic-bezier(.23,.23,.01,.99)')
+				})
+			})
+		})
+	}
+
+	var pauseToPlayZoom = function ( paper ){
+		paper.animate({
+			path: pause
+		}, 0, function(){
+			paper.animate({
+				path: pauseOffCanvas
+			}, animationSpeed*.75, 'cubic-bezier(.97,.01,.76,.76)', function(){
+				paper.animate({
+					path: nothing
 				}, 0, function(){
 					paper.animate({
-						path: chevronUp
-					}, animationSpeed*.5, '<>');
+						path: play
+					}, animationSpeed, 'cubic-bezier(.23,.23,.01,.99)');
 				});
 			});
 		});
 	}
 
-	var chevronFanDown = function ( paper ){
+	var playToStop = function ( paper ){
 		paper.animate({
-			path: chevronUp
+			path: play
 		}, 0, function(){
 			paper.animate({
-				path: 'M ' + 25*size + ' ' + 35*size + ' l ' + 0 + ' ' + -20*size + ' l ' + 0 + ' ' + 20*size
-			}, animationSpeed*.5, '<>', function(){
-				paper.animate({
-					path: 'M ' + 25*size + ' ' + 15*size + ' l ' + 0 + ' ' + 20*size + ' l ' + 0 + ' ' + -20*size
-				}, 0, function(){
-					paper.animate({
-						path:chevronDown
-					}, animationSpeed*.5, '<>');
-				});
-			});
+				path: stop
+			}, animationSpeed, 'cubic-bezier(.23,.23,.01,.99)');
 		});
 	}
 
-	var chevronFlipUp = function ( paper ){
+	var stopToPlay = function ( paper ){
 		paper.animate({
-			path:chevronDown
+			path: stop
 		}, 0, function(){
 			paper.animate({
-				path: 'M ' + 25*size + ' ' + 35*size + ' l ' + 0 + ' ' + -20*size + ' l ' + 0 + ' ' + 20*size
-			}, animationSpeed*.5, '<>', function(){
-				paper.animate({
-					path:chevronUp
-				}, animationSpeed*.5, '<>');
-			});
+				path: play
+			}, animationSpeed, 'cubic-bezier(.23,.23,.01,.99)');
 		});
 	}
 
-	var chevronFlipDown = function ( paper ){
-		paper.animate({
-			path:chevronUp
-		}, 0, function(){
-			paper.animate({
-				path: 'M ' + 25*size + ' ' + 15*size + ' l ' + 0 + ' ' + 20*size + ' l ' + 0 + ' ' + -20*size
-			}, animationSpeed*.5, '<>', function(){
-				paper.animate({
-					path:chevronDown
-				}, animationSpeed*.5, '<>');
-			});
-		});
-	}
-
-	var chevronSpringUp = function ( paper ){
-		paper.animate({
-			path:chevronDown
-		}, 0, function(){
-			paper.animate({
-				path: 'M ' + 23*size + ' ' + 15*size + ' l ' + 2*size + ' ' + 20*size + ' l ' + 2*size + ' ' + -20*size
-			}, animationSpeed*.5, '<>', function(){
-				paper.animate({
-					path: chevronUp
-				}, animationSpeed*.5, '<>');
-			});
-		});
-	}
-
-	var chevronSpringDown = function ( paper ){
-		paper.animate({
-			path:chevronUp
-		}, 0, function(){
-			paper.animate({
-				path: 'M ' + 23*size + ' ' + 35*size + ' l ' + 2*size + ' ' + -20*size + ' l ' + 2*size + ' ' + 20*size
-			}, animationSpeed*.5, '<>', function(){
-				paper.animate({
-					path:chevronDown
-				}, animationSpeed*.5, '<>');
-			});
-		});
-	}
 
 	////////////////////////
 	// INITIALIZE DRAWING //
 	////////////////////////
 
-	var paper = Raphael($(this)[0], 50*size, 50*size)
+	var paper = Raphael($(this)[0], 50*size, 50*size);
 
-	// Draws Menu Icon or X depending on data-fay-open attribute
-	if ( $(this).attr('data-fay-up') == "true" ){
-		var path = paper.path(chevronUp)
-	} else {
-    	var path = paper.path(chevronDown)
+	var path = paper.path(play);
+	if ( !$(this).attr('data-fay-play') ) {
+		$(this).attr('data-fay-play', 'true')
 	}
 
 	path.attr({
-		'stroke-linejoin' : 'round',
-		'stroke-width'    : strokeWidth,
-		'stroke-linecap'  : 'round'
+		'fill' : 'black',
+		'line-join' : 'rounded'
 	});
     
-   	// Click and animation logic
-	$(this).on('click', function(){
-		if ( $(this).attr('data-fay-up') == 'true' ){
-			if ( $(this).hasClass('fay-chevron-default-down') ) {
-    			chevronDefaultDown(path);
-    		} else if ( $(this).hasClass('fay-chevron-fan-down') ) {
-    			chevronFanDown(path);
-    		} else if ( $(this).hasClass('fay-chevron-flip-down') ) {
-    			chevronFlipDown(path);
-    		} else if ( $(this).hasClass('fay-chevron-spring-down') ) {
-    			chevronSpringDown(path);
-    		} else if ( $(this).hasClass('fay-chevron-default') ){ 
-    			chevronDefaultDown(path);
-    		} else if ( $(this).hasClass('fay-chevron-fan') ) {
-    			chevronFanDown(path);
-    		} else if ( $(this).hasClass('fay-chevron-flip') ) {
-    			chevronFlipDown(path);
-    		} else if ( $(this).hasClass('fay-chevron-spring') ) {
-    			chevronSpringDown(path);
-    		} else {
-    			chevronDefaultDown(path);
-    		}
-			$(this).attr('data-fay-up', 'false');
+    // Checks for class; returns true or false
+	var check = function ( el, fayClass ){
+		if ( el.hasClass(fayClass) ){
+			return true
 		} else {
-			if ( $(this).hasClass('fay-chev-default-up') ){
-    			chevronDefaultUp(path);
-    		} else if ( $(this).hasClass('fay-chevron-fan-up') ) {
-    			chevronFanUp(path);
-    		} else if ( $(this).hasClass('fay-chevron-flip-up') ) {
-    			chevronFlipUp(path);
-    		} else if ( $(this).hasClass('fay-chevron-spring-up') ){
-    			chevronSpringUp(path);
-    		} else if ( $(this).hasClass('fay-chevron-default') ){
-    			chevronDefaultUp(path);
-    		} else if ( $(this).hasClass('fay-chevron-fan') ) {
-    			chevronFanUp(path);
-    		} else if (  $(this).hasClass('fay-chevron-flip') ) {
-    			chevronFlipUp(path);
-    		} else if ( $(this).hasClass('fay-chevron-spring') ) {
-    			chevronSpringUp(path);
-    		} else {
-    			chevronDefaultUp(path);
-    		}
-    		$(this).attr('data-fay-up', 'true');
+			return false
 		}
-	});
+	}
+
+   	// Click and animation logic
+   	$(this).on('click', function(){
+   		if( $(this).attr('data-fay-play') === 'true' ){
+   			if ( check($(this), 'fay-play-default') ){
+   				playToPause(path);
+   			} else if ( check($(this), 'fay-play-zoom' ) ){
+   				playToPauseZoom(path);
+   			} else if ( check($(this), 'fay-play-stop') ){
+   				playToStop(path);
+   			}
+   			$(this).attr('data-fay-play', 'false')
+   		} else {
+   			if( check($(this), 'fay-play-default' ) ){
+   				pauseToPlay(path);
+   			} else if ( check($(this), 'fay-play-zoom') ){
+   				pauseToPlayZoom(path)
+   			} else if ( check($(this), 'fay-play-stop') ){
+   				stopToPlay(path)
+   			}
+   			$(this).attr('data-fay-play', 'true') 
+   		}
+   	});
+
+
+	// $(this).on('click', function(){
+	// 	if ( $(this).attr('data-fay-up') == 'true' ){
+	// 		if ( $(this).hasClass('fay-chevron-default-down') ) {
+ //    			chevronDefaultDown(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-fan-down') ) {
+ //    			chevronFanDown(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-flip-down') ) {
+ //    			chevronFlipDown(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-spring-down') ) {
+ //    			chevronSpringDown(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-default') ){ 
+ //    			chevronDefaultDown(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-fan') ) {
+ //    			chevronFanDown(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-flip') ) {
+ //    			chevronFlipDown(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-spring') ) {
+ //    			chevronSpringDown(path);
+ //    		} else {
+ //    			chevronDefaultDown(path);
+ //    		}
+	// 		$(this).attr('data-fay-up', 'false');
+	// 	} else {
+	// 		if ( $(this).hasClass('fay-chev-default-up') ){
+ //    			chevronDefaultUp(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-fan-up') ) {
+ //    			chevronFanUp(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-flip-up') ) {
+ //    			chevronFlipUp(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-spring-up') ){
+ //    			chevronSpringUp(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-default') ){
+ //    			chevronDefaultUp(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-fan') ) {
+ //    			chevronFanUp(path);
+ //    		} else if (  $(this).hasClass('fay-chevron-flip') ) {
+ //    			chevronFlipUp(path);
+ //    		} else if ( $(this).hasClass('fay-chevron-spring') ) {
+ //    			chevronSpringUp(path);
+ //    		} else {
+ //    			chevronDefaultUp(path);
+ //    		}
+ //    		$(this).attr('data-fay-up', 'true');
+	// 	}
+	// });
 });

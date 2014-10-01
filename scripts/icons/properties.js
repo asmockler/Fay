@@ -45,6 +45,9 @@ addProperties();
 
 
 // TODO
+// Add easings - do 3? linear, ease-in-out, bounce
+	// .82,-0.37,.43,.87 possible bounce easing
+// Add circles around icons
 // Allow for declaring units (convert px to rem, etc)
 // Fix spinners
 // Play to pause

@@ -102,6 +102,9 @@ $("[class*='fay-menu'").each(function ( i ){
 		})	
 	}
 
+// 	'cubic-bezier(.97,.01,.76,.76)'
+//  'cubic-bezier(.23,.23,.01,.99)'
+
 	var menuFoldOpen = function ( paper ){
 		paper.animate({
 			path: 'M ' + 25*size + ' ' + 10*size + ' ' + ' l ' +  0 + ' ' + 30*size + ' M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size + ' M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size
@@ -125,13 +128,13 @@ $("[class*='fay-menu'").each(function ( i ){
 	var menuFloatOpen = function ( paper ){
 		paper.animate({
 			path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
-		}, animationSpeed*.5, '<>', function(){
+		}, animationSpeed*.5, 'cubic-bezier(.97,.01,.76,.76)', function(){
 			paper.animate({
 				path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0				
 			}, 0, function(){
 				paper.animate({
 					path: menuX
-				}, animationSpeed*.5, '<>');
+				}, animationSpeed*.5, 'cubic-bezier(.23,.23,.01,.99)');
 			});
 		});
 	}
@@ -139,13 +142,13 @@ $("[class*='fay-menu'").each(function ( i ){
 	var menuFloatClose = function ( paper ){
 		paper.animate({
 			path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
-		}, animationSpeed*.5, '<>', function(){
+		}, animationSpeed*.5, 'cubic-bezier(.97,.01,.76,.76)', function(){
 			paper.animate({
 				path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
 			}, 0, function(){
 				paper.animate({
 					path: 'M ' + 5*size + ' ' + 15*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 35*size + ' l ' + 40*size + ' ' + 0
-				}, animationSpeed*.5, '<>');
+				}, animationSpeed*.5, 'cubic-bezier(.23,.23,.01,.99)');
 			});
 		});
 	}

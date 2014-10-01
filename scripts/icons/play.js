@@ -133,16 +133,6 @@ $("[class*='fay-play']").each(function ( i ){
 
 	var paper = Raphael($(this)[0], 50*size, 50*size);
 
-	var path = paper.path(play);
-	if ( !$(this).attr('data-fay-play') ) {
-		$(this).attr('data-fay-play', 'true')
-	}
-
-	path.attr({
-		'fill' : 'black',
-		'line-join' : 'rounded'
-	});
-    
     // Checks for class; returns true or false
 	var check = function ( el, fayClass ){
 		if ( el.hasClass(fayClass) ){
@@ -151,6 +141,27 @@ $("[class*='fay-play']").each(function ( i ){
 			return false
 		}
 	}
+
+	if ( !$(this).attr('data-fay-play') ) {
+		$(this).attr('data-fay-play', 'true')
+	}
+
+	if ( $(this).attr('data-fay-play') === 'true' ){
+		var path = paper.path(play);
+	} else if ( $(this).attr('data-fay-play') === 'false' ){
+		if( check($(this), 'fay-play-stop' ) ){
+			var path = paper.path(stop);
+		} else {
+			var path = paper.path(pause)
+		}
+	}
+
+	path.attr({
+		'fill' : 'black',
+		'line-join' : 'rounded'
+	});
+    
+
 
    	// Click and animation logic
    	$(this).on('click', function(){

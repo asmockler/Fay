@@ -48,10 +48,10 @@ $("[class*='fay-play']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: nothing
-			}, animationSpeed*.5, 'cubic-bezier(.97,.01,.76,.76)', function(){
+			}, animationSpeed*.5, Easings.easeIn, function(){
 				paper.animate({
 					path: pause
-				}, animationSpeed*.5, 'cubic-bezier(.23,.23,.01,.99)');
+				}, animationSpeed*.5, Easings.easeOut);
 			});
 		});
 	}
@@ -62,10 +62,10 @@ $("[class*='fay-play']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: nothing
-			}, animationSpeed*.5, 'cubic-bezier(.97,.01,.76,.76)', function(){
+			}, animationSpeed*.5, Easings.easeIn, function(){
 				paper.animate({
 					path: play
-				}, animationSpeed*.5, 'cubic-bezier(.23,.23,.01,.99)')
+				}, animationSpeed*.5, Easings.easeOut)
 			});
 		});
 	}
@@ -76,13 +76,13 @@ $("[class*='fay-play']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: nothing
-			}, animationSpeed*.5, 'cubic-bezier(.97,.01,.76,.76)', function(){
+			}, animationSpeed*.5, Easings.easeIn, function(){
 				paper.animate({
 					path: pauseOffCanvas
 				}, 0, '<>', function(){
 					paper.animate({
 						path: pause
-					}, animationSpeed*1.5, 'cubic-bezier(.23,.23,.01,.99)')
+					}, animationSpeed*1.5, Easings.easeOut)
 				})
 			})
 		})
@@ -94,13 +94,13 @@ $("[class*='fay-play']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: pauseOffCanvas
-			}, animationSpeed*.75, 'cubic-bezier(.97,.01,.76,.76)', function(){
+			}, animationSpeed*.75, Easings.easeIn, function(){
 				paper.animate({
 					path: nothing
 				}, 0, function(){
 					paper.animate({
 						path: play
-					}, animationSpeed, 'cubic-bezier(.23,.23,.01,.99)');
+					}, animationSpeed, Easings.easeOut);
 				});
 			});
 		});
@@ -112,7 +112,7 @@ $("[class*='fay-play']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: stop
-			}, animationSpeed, 'cubic-bezier(.23,.23,.01,.99)');
+			}, animationSpeed, Easings.easeOut);
 		});
 	}
 
@@ -122,7 +122,7 @@ $("[class*='fay-play']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: play
-			}, animationSpeed, 'cubic-bezier(.23,.23,.01,.99)');
+			}, animationSpeed, Easings.easeOut);
 		});
 	}
 
@@ -161,8 +161,6 @@ $("[class*='fay-play']").each(function ( i ){
 		'line-join' : 'rounded'
 	});
     
-
-
    	// Click and animation logic
    	$(this).on('click', function(){
    		if( $(this).attr('data-fay-play') === 'true' ){
@@ -185,51 +183,4 @@ $("[class*='fay-play']").each(function ( i ){
    			$(this).attr('data-fay-play', 'true') 
    		}
    	});
-
-
-	// $(this).on('click', function(){
-	// 	if ( $(this).attr('data-fay-up') == 'true' ){
-	// 		if ( $(this).hasClass('fay-chevron-default-down') ) {
- //    			chevronDefaultDown(path);
- //    		} else if ( $(this).hasClass('fay-chevron-fan-down') ) {
- //    			chevronFanDown(path);
- //    		} else if ( $(this).hasClass('fay-chevron-flip-down') ) {
- //    			chevronFlipDown(path);
- //    		} else if ( $(this).hasClass('fay-chevron-spring-down') ) {
- //    			chevronSpringDown(path);
- //    		} else if ( $(this).hasClass('fay-chevron-default') ){ 
- //    			chevronDefaultDown(path);
- //    		} else if ( $(this).hasClass('fay-chevron-fan') ) {
- //    			chevronFanDown(path);
- //    		} else if ( $(this).hasClass('fay-chevron-flip') ) {
- //    			chevronFlipDown(path);
- //    		} else if ( $(this).hasClass('fay-chevron-spring') ) {
- //    			chevronSpringDown(path);
- //    		} else {
- //    			chevronDefaultDown(path);
- //    		}
-	// 		$(this).attr('data-fay-up', 'false');
-	// 	} else {
-	// 		if ( $(this).hasClass('fay-chev-default-up') ){
- //    			chevronDefaultUp(path);
- //    		} else if ( $(this).hasClass('fay-chevron-fan-up') ) {
- //    			chevronFanUp(path);
- //    		} else if ( $(this).hasClass('fay-chevron-flip-up') ) {
- //    			chevronFlipUp(path);
- //    		} else if ( $(this).hasClass('fay-chevron-spring-up') ){
- //    			chevronSpringUp(path);
- //    		} else if ( $(this).hasClass('fay-chevron-default') ){
- //    			chevronDefaultUp(path);
- //    		} else if ( $(this).hasClass('fay-chevron-fan') ) {
- //    			chevronFanUp(path);
- //    		} else if (  $(this).hasClass('fay-chevron-flip') ) {
- //    			chevronFlipUp(path);
- //    		} else if ( $(this).hasClass('fay-chevron-spring') ) {
- //    			chevronSpringUp(path);
- //    		} else {
- //    			chevronDefaultUp(path);
- //    		}
- //    		$(this).attr('data-fay-up', 'true');
-	// 	}
-	// });
 });

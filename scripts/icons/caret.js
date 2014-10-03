@@ -40,7 +40,7 @@ $("[class*='fay-caret'").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: end,
-			}, animationSpeed, 'cubic-bezier(.82,.32,.51,.93)');
+			}, animationSpeed, Easings.easeOut);
 		});
 	}
 
@@ -53,7 +53,7 @@ $("[class*='fay-caret'").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				transform: 'R' + trueRotation,
-			}, animationSpeed, 'cubic-bezier(.82,.32,.51,.93)');
+			}, animationSpeed, Easings.easeOut);
 		});
 	}
 

@@ -51,7 +51,7 @@ $("[class*='fay-menu'").each(function ( i ){
 				paper.animate({
 					path: menuX,
 					transform: 'r0'
-				}, animationSpeed, function(){
+				}, animationSpeed, Easings.easeInOut, function(){
 					paper.animate({
 						transform: 'R180'
 					});
@@ -68,7 +68,7 @@ $("[class*='fay-menu'").each(function ( i ){
 			paper.animate({
 				path: menuBars,
 				transform: 'r0'
-			}, animationSpeed, function(){
+			}, animationSpeed, easeInOut, function(){
 				paper.animate({
 					transform: 'R180'
 				});
@@ -83,7 +83,7 @@ $("[class*='fay-menu'").each(function ( i ){
 			paper.animate({
 				path: menuX,
 				transform:'R180'
-			}, animationSpeed, '<>', function(){
+			}, animationSpeed, Easings.easeOut, function(){
 				paper.animate({
 					transform:'R0'
 				}, 0);
@@ -98,23 +98,20 @@ $("[class*='fay-menu'").each(function ( i ){
 			paper.animate({
 				path: menuBars,
 				transform: 'R0'
-			}, animationSpeed, '<>')
+			}, animationSpeed, Easings.easeOut)
 		})	
 	}
-
-// 	'cubic-bezier(.97,.01,.76,.76)'
-//  'cubic-bezier(.23,.23,.01,.99)'
 
 	var menuFoldOpen = function ( paper ){
 		paper.animate({
 			path: 'M ' + 25*size + ' ' + 10*size + ' ' + ' l ' +  0 + ' ' + 30*size + ' M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size + ' M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size
-		}, animationSpeed*.5, '<>', function() {
+		}, animationSpeed*.5, Easings.easeIn, function() {
 			paper.animate({
 				path: 'M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size + ' M ' + 25*size + ' ' + 10*size + ' l ' + 0 + ' ' + 30*size
 			}, 0, function(){
 				paper.animate({
 					path: menuX
-				}, animationSpeed*.5);
+				}, animationSpeed*.5, Easings.easeOut);
 			});
 		});
 	}
@@ -122,19 +119,19 @@ $("[class*='fay-menu'").each(function ( i ){
 	var menuFoldClose = function ( paper ){
 		paper.animate({
 			path: menuBars
-		}, animationSpeed*.5)
+		}, animationSpeed, Easings.easeOut)
 	}
 
 	var menuFloatOpen = function ( paper ){
 		paper.animate({
 			path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
-		}, animationSpeed*.5, 'cubic-bezier(.97,.01,.76,.76)', function(){
+		}, animationSpeed*.5, Easings.easeIn, function(){
 			paper.animate({
 				path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0				
 			}, 0, function(){
 				paper.animate({
 					path: menuX
-				}, animationSpeed*.5, 'cubic-bezier(.23,.23,.01,.99)');
+				}, animationSpeed*.5, Easings.easeOut);
 			});
 		});
 	}
@@ -142,13 +139,13 @@ $("[class*='fay-menu'").each(function ( i ){
 	var menuFloatClose = function ( paper ){
 		paper.animate({
 			path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
-		}, animationSpeed*.5, 'cubic-bezier(.97,.01,.76,.76)', function(){
+		}, animationSpeed*.5, Easings.easeIn, function(){
 			paper.animate({
 				path: 'M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0
 			}, 0, function(){
 				paper.animate({
 					path: 'M ' + 5*size + ' ' + 15*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 25*size + ' l ' + 40*size + ' ' + 0 + ' M ' + 5*size + ' ' + 35*size + ' l ' + 40*size + ' ' + 0
-				}, animationSpeed*.5, 'cubic-bezier(.23,.23,.01,.99)');
+				}, animationSpeed*.5, Easings.easeOut);
 			});
 		});
 	}

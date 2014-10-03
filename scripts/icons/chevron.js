@@ -45,7 +45,7 @@ $("[class*='fay-chevron']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: chevronUp
-			}, animationSpeed*.75, '<>');
+			}, animationSpeed*.75, Easings.easeOut);
 		});
 	}
 
@@ -55,7 +55,7 @@ $("[class*='fay-chevron']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: chevronDown
-			}, animationSpeed*.75, '<>');
+			}, animationSpeed*.75, Easings.easeOut);
 		});
 	}
 
@@ -65,13 +65,13 @@ $("[class*='fay-chevron']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: 'M ' + 25*size + ' ' + 15*size + ' l ' + 0 + ' ' + 20*size + ' l ' + 0 + ' ' + -20*size
-			}, animationSpeed*.5, '<>', function(){
+			}, animationSpeed*.65, Easings.easeIn, function(){
 				paper.animate({
 					path: 'M ' + 25*size + ' ' + 35*size + ' l ' + 0 + ' ' + -20*size + ' l ' + 0 + ' ' + 20*size
 				}, 0, function(){
 					paper.animate({
 						path: chevronUp
-					}, animationSpeed*.5, '<>');
+					}, animationSpeed*.65, Easings.easeOut);
 				});
 			});
 		});
@@ -83,13 +83,13 @@ $("[class*='fay-chevron']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: 'M ' + 25*size + ' ' + 35*size + ' l ' + 0 + ' ' + -20*size + ' l ' + 0 + ' ' + 20*size
-			}, animationSpeed*.5, '<>', function(){
+			}, animationSpeed*.65, Easings.easeIn, function(){
 				paper.animate({
 					path: 'M ' + 25*size + ' ' + 15*size + ' l ' + 0 + ' ' + 20*size + ' l ' + 0 + ' ' + -20*size
 				}, 0, function(){
 					paper.animate({
 						path:chevronDown
-					}, animationSpeed*.5, '<>');
+					}, animationSpeed*.65, Easings.easeOut);
 				});
 			});
 		});
@@ -101,10 +101,10 @@ $("[class*='fay-chevron']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: 'M ' + 25*size + ' ' + 35*size + ' l ' + 0 + ' ' + -20*size + ' l ' + 0 + ' ' + 20*size
-			}, animationSpeed*.5, '<>', function(){
+			}, animationSpeed*.65, Easings.easeIn, function(){
 				paper.animate({
 					path:chevronUp
-				}, animationSpeed*.5, '<>');
+				}, animationSpeed*.65, Easings.easeOut);
 			});
 		});
 	}
@@ -115,10 +115,10 @@ $("[class*='fay-chevron']").each(function ( i ){
 		}, 0, function(){
 			paper.animate({
 				path: 'M ' + 25*size + ' ' + 15*size + ' l ' + 0 + ' ' + 20*size + ' l ' + 0 + ' ' + -20*size
-			}, animationSpeed*.5, '<>', function(){
+			}, animationSpeed*.65, Easings.easeIn, function(){
 				paper.animate({
 					path:chevronDown
-				}, animationSpeed*.5, '<>');
+				}, animationSpeed*.65, Easings.easeOut);
 			});
 		});
 	}

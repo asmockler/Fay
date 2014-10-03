@@ -1,3 +1,10 @@
+var Easings = {
+	'easeIn'    : 'cubic-bezier(.97,.01,.76,.76)', 
+	'easeOut'   : 'cubic-bezier(.23,.23,0,1)', 
+	'easeInOut' : 'cubic-bezier(1,0,0,1)', 
+	'linear'    : 'cubic-bezier(1,1,0,0)' 
+}
+
 var preLoadProperties = function () {
 	var fay = $("[class*='fay-']");
 
@@ -21,4 +28,3 @@ var preLoadProperties = function () {
 }
 
 preLoadProperties();
-

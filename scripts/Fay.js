@@ -17,13 +17,15 @@ var preLoadProperties = function () {
 			var sizeWithoutUnits = $(this).attr('data-fay-size').replace(/[^\d.]/g, '');
 			$(this).attr('data-fay-size', sizeWithoutUnits);
 		} else if ( $(this).attr('data-fay-scale') ) {
-			var fontSize = $('p').css('font-size').replace( /[^\d.]/g, '' );
+			var defaultP = $('body').children().first().before('<p class="get-fay-size"></p>');
+			var fontSize = defaultP.css('font-size').replace( /[^\d.]/g, '' );
 			var scaleAttr = $(this).attr('data-fay-scale').replace( /[^\d.]/g, '' );
 			var trueScale = parseFloat(fontSize, 10)*parseFloat(scaleAttr, 10);
 			var elScale = 10 * Math.round(trueScale/5);
 			$(this).attr('data-fay-size', elScale);
 		} else {
-			var fontSize = $('p').css('font-size').replace( /[^\d.]/g, '' );
+			var defaultP = $('body').children().first().before('<p class="get-fay-size"></p>');
+			var fontSize = defaultP.css('font-size').replace( /[^\d.]/g, '' );
 			var elScale = 10 * Math.round(fontSize/5);
 			$(this).attr('data-fay-size', elScale);
 		}
@@ -197,7 +199,8 @@ $("[class*='fay-menu'").each(function ( i ){
 	if ( $(this).attr('data-fay-open') == "true" ){
 		var path = paper.path(menuX).transform('R180')
 	} else {
-    	var path = paper.path(menuBars)
+    	var path = paper.path(menuBars);
+    	$(this).attr('data-fay-open', "false")
 	}
 
 	path.attr({
@@ -396,9 +399,10 @@ $("[class*='fay-chevron']").each(function ( i ){
 	var paper = Raphael($(this)[0], 50*size, 50*size)
 	// Draws Menu Icon or X depending on data-fay-open attribute
 	if ( $(this).attr('data-fay-up') == "true" ){
-		var path = paper.path(chevronUp)
+		var path = paper.path(chevronUp);
 	} else {
-    	var path = paper.path(chevronDown)
+    	var path = paper.path(chevronDown);
+    	$(this).attr('data-fay-up', "false");
 	}
 	path.attr({
 		'stroke-linejoin' : 'round',
@@ -582,6 +586,7 @@ $("[class*='fay-caret'").each(function ( i ){
 	if( $(this).hasClass('fay-caret-spin-down') || $(this).hasClass('fay-caret-spin-left') || $(this).hasClass('fay-caret-spin-right') || $(this).hasClass('fay-caret-spin-up') || $(this).hasClass('fay-caret-spin'))
 	{
 		var path = paper.path(caretSpin);
+		if (!caret.attr('spun')) {caret.attr('spun', 'false');}
 		$(this).on('click', function(){
 			if ( caret.attr('spun') == 'true') {
 				spin(path, parseInt(startingRotation, 10) + parseInt(rotationAmount, 10), -rotationAmount);
@@ -598,6 +603,7 @@ $("[class*='fay-caret'").each(function ( i ){
 	else if ( $(this).hasClass('fay-caret-flip') || $(this).hasClass('fay-caret-flip-up') || $(this).hasClass('fay-caret-flip-right') || $(this).hasClass('fay-caret-flip-down') || $(this).hasClass('fay-caret-flip-left') )
 	{
 		var path = paper.path(flipDirection);
+		if (!caret.attr('flipped')) {caret.attr('spun', 'false');}
 		$(this).on('click', function(){
 			if ( caret.attr('flipped') == 'true' ) {
 				flip(path, flipDestination, flipDirection);

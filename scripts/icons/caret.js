@@ -147,6 +147,7 @@ $("[class*='fay-caret'").each(function ( i ){
 	if( $(this).hasClass('fay-caret-spin-down') || $(this).hasClass('fay-caret-spin-left') || $(this).hasClass('fay-caret-spin-right') || $(this).hasClass('fay-caret-spin-up') || $(this).hasClass('fay-caret-spin'))
 	{
 		var path = paper.path(caretSpin);
+		if (!caret.attr('spun')) {caret.attr('spun', 'false');}
 		$(this).on('click', function(){
 			if ( caret.attr('spun') == 'true') {
 				spin(path, parseInt(startingRotation, 10) + parseInt(rotationAmount, 10), -rotationAmount);
@@ -163,6 +164,7 @@ $("[class*='fay-caret'").each(function ( i ){
 	else if ( $(this).hasClass('fay-caret-flip') || $(this).hasClass('fay-caret-flip-up') || $(this).hasClass('fay-caret-flip-right') || $(this).hasClass('fay-caret-flip-down') || $(this).hasClass('fay-caret-flip-left') )
 	{
 		var path = paper.path(flipDirection);
+		if (!caret.attr('flipped')) {caret.attr('spun', 'false');}
 		$(this).on('click', function(){
 			if ( caret.attr('flipped') == 'true' ) {
 				flip(path, flipDestination, flipDirection);

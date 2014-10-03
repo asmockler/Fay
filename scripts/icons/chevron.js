@@ -161,7 +161,8 @@ $("[class*='fay-chevron']").each(function ( i ){
 	if ( $(this).attr('data-fay-up') == "true" ){
 		var path = paper.path(chevronUp)
 	} else {
-    	var path = paper.path(chevronDown)
+    	var path = paper.path(chevronDown);
+    	$(this).attr('data-fay-up', "false");
 	}
 
 	path.attr({

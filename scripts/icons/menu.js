@@ -160,7 +160,8 @@ $("[class*='fay-menu'").each(function ( i ){
 	if ( $(this).attr('data-fay-open') == "true" ){
 		var path = paper.path(menuX).transform('R180')
 	} else {
-    	var path = paper.path(menuBars)
+    	var path = paper.path(menuBars);
+    	$(this).attr('data-fay-open', "false")
 	}
 
 	path.attr({

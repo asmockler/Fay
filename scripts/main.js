@@ -1,10 +1,10 @@
 requirejs.config({
 	"baseUrl": "scripts/icons",
 	"paths": {
-		"main"      : "../main",
-		"jquery"    : "http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min",
-		"raphael"   : "../lib/raphael",
-		"bootstrap" : "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js",
+		main      : "../main",
+		jquery    : "http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min",
+		raphael   : "../lib/raphael",
+		bootstrap : "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js",
 	}
 });
 

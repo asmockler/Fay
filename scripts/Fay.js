@@ -867,9 +867,15 @@
 		}
 	}
 
-	Fay = fay;
+	window.Fay = fay;
 
-	return Fay;
+	if (typeof window.define === "function" && window.define.amd) {
+	  window.define("fay", [], function() {
+	    return window.Fay;
+	  });
+	} else {
+		return window.Fay;
+	}
 
 }());
 

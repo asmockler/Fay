@@ -1,4 +1,7 @@
 (function () {
+	if (typeof jQuery === 'undefined') { throw new Error('Fay requires jQuery') }
+	if (typeof Raphael === 'undefined') { throw new Error('Fay requires Raphael.js') }
+	
 	var fay = {
 		Easings : {
 			'easeIn'    : 'cubic-bezier(.97,.01,.76,.76)', 

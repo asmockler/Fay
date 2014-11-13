@@ -857,7 +857,11 @@
 		},
 		init : function ( selector ){
 			if ( selector ){
-				var selector = selector;
+				if ( typeof selector === 'string' ) {
+					var selector = selector;
+				} else {
+					throw new Error('Initialization selector must be a string');
+				}
 			} else {
 				var selector;
 			}
@@ -881,5 +885,3 @@
 	}
 
 }());
-
-

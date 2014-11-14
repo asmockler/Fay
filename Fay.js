@@ -871,6 +871,14 @@
 			fay.menu(selector);
 			fay.play(selector);
 			fay.properties(selector);
+		},
+		destroy : function ( selector ){
+			if ( selector ) {
+				var els = $(selector).find("[class*='fay-']");
+			} else {
+				var els = $("[class*='fay-']");
+			}
+			els.empty();
 		}
 	}
 

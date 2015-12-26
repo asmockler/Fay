@@ -12,6 +12,8 @@ $animation-speed: 300ms;
     background: black;
     margin: auto;
 
+    animation-duration: $animation-speed;
+
     animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
@@ -30,19 +32,12 @@ $animation-speed: 300ms;
   &.closed {
     div:first-of-type {
       top: 15px;
-      animation-duration: $animation-speed;
-      animation-name: top-open-to-middle, top-open-rotate;
     }
     div:nth-of-type(2) {
       top: 25px;
-      animation-duration: 1ms;
-      animation-delay: $animation-speed/2;
-      animation-name: middle-open-shrink;
     }
     div:last-of-type {
       top: 35px;
-      animation-duration: $animation-speed;
-      animation-name: bottom-open-to-middle, bottom-open-rotate;
     }
   }
 
@@ -51,88 +46,14 @@ $animation-speed: 300ms;
     div:first-of-type {
       top: 25px;
       transform: rotate(45deg);
-      animation-duration: $animation-speed;
-      animation-name: top-close-rotate, top-close-to-top;
     }
     div:nth-of-type(2) {
       top: 25px;
       opacity: 0;
-      animation-duration: 1ms;
-      animation-delay: $animation-speed/2;
-      animation-name: middle-close-grow;
     }
     div:last-of-type {
       top: 25px;
       transform: rotate(-45deg);
-      animation-duration: $animation-speed;
-      animation-name: bottom-close-rotate, bottom-close-to-bottom;
     }
-  }
-
-  ////
-  // Animations
-  //
-
-  // Top opening animations
-  @keyframes top-open-to-middle {
-    0% { top: 15px; }
-    50% { top: 25px; }
-    100% { top: 25px; }
-  }
-
-  @keyframes top-open-rotate {
-    0% { transform: rotate(0deg) }
-    50% { transform: rotate(0deg) }
-    100% { transform: rotate(45deg) }
-  }
-
-  // Middle Opening Animations
-  @keyframes middle-open-shrink {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-  }
-
-  // Bottom Opening Animations
-  @keyframes bottom-open-to-middle {
-    0% { top: 35px; }
-    50% { top: 25px; }
-    100% { top: 25px; }
-  }
-
-  @keyframes bottom-open-rotate {
-    0% { transform: rotate(0deg) }
-    50% { transform: rotate(0deg) }
-    100% { transform: rotate(-45deg) }
-  }
-
-  // Top Closing Animations
-  @keyframes top-close-rotate {
-    0% { transform: rotate(45deg) }
-    50% { transform: rotate(0deg) }
-    100% { transform: rotate(0deg) }
-  }
-
-  @keyframes top-close-to-top {
-    0% { top: 25px; }
-    50% { top: 25px; }
-    100% { top: 15px; }
-  }
-
-  // Middle Closing Animations
-  @keyframes middle-close-grow {
-    0% { opacity: 0 }
-    100% { opacity: 1 }
-  }
-
-  // Bottom Closing Animations
-  @keyframes bottom-close-rotate {
-    0% { transform: rotate(-45deg) }
-    50% { transform: rotate(0deg) }
-    100% { transform: rotate(0deg) }
-  }
-  @keyframes bottom-close-to-bottom {
-    0% { top: 25px; }
-    50% { top: 25px; }
-    100% { top: 35px; }
   }
 }

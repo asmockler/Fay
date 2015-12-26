@@ -1,0 +1,71 @@
+$animation-speed: 300ms;
+
+.menu.fold {
+  &.closed {
+    div:first-of-type {
+      animation-name: top-rotate-open;
+    }
+    div:nth-of-type(2) {
+      animation-name: middle-rotate-disappear;
+    }
+    div:last-of-type {
+      animation-name: bottom-rotate-open;
+    }
+  }
+
+  &.open {
+    div:first-of-type {
+      animation-name: top-close;
+    }
+    div:nth-of-type(2) {
+      animation-name: middle-close;
+    }
+    div:last-of-type {
+      animation-name: bottom-close;
+    }
+  }
+
+  ////
+  // Keyframes
+  //
+
+  // Top opening animation
+  @keyframes top-rotate-open {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    50% { transform: translate3d(0, 10px, 0) rotate(90deg); }
+    100% { transform: translate3d(0, 10px, 0) rotate(45deg); }
+  }
+
+  // Middle opening animation
+  @keyframes middle-rotate-disappear {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 1 }
+    50% { transform: rotate(90deg); opacity: 1 }
+    51% { transform: rotate(90deg); opacity: 0 }
+    100% { transform: rotate(90deg); opacity: 0 }
+  }
+
+  // Bottom opening animation
+  @keyframes bottom-rotate-open {
+    0% { transform: translate3d(0, 0px, 0) rotate(0deg); }
+    50% { transform: translate3d(0, -10px, 0) rotate(90deg); }
+    100% { transform: translate3d(0, -10px, 0) rotate(135deg); }
+  }
+
+  // Top closing animation
+  @keyframes top-close {
+    0% { transform: translate3d(0, 0, 0) rotate(45deg); }
+    100% { transform: translate3d(0, -10px, 0) rotate(0deg); }
+  }
+
+  // Middle closing animation
+  @keyframes middle-close {
+    0% { transform: rotate(45deg); opacity: 1 }
+    100% { transform: rotate(0deg); opacity: 1 }
+  }
+
+  // Bottom closing animation
+  @keyframes bottom-close {
+    0% { transform: translate3d(0, 0, 0) rotate(-45deg) }
+    100% { transform: translate3d(0, 10px, 0) rotate(0deg) }
+  }
+}

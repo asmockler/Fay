@@ -12,14 +12,15 @@ const Fay = React.createClass({
     })
   },
 
-  animate(e) {
-    this.setState({open: !this.state.open}, () => {console.log(this.state.open)})
+  animate() {
+    this.setState({open: !this.state.open})
   },
 
   render() {
     return (
       <div>
         <Menu type="float" />
+        <Menu type="fold" />
       </div>
     )
   }

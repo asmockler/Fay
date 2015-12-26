@@ -5,7 +5,8 @@ import FayBase from './../common/fay_base'
 const Menu = React.createClass({
   getInitialState() {
     return {
-      open: false
+      open: false,
+      initialLoad: true
     }
   },
 
@@ -15,17 +16,33 @@ const Menu = React.createClass({
     }
   },
 
+  firstClick() {
+    this.setState({initialLoad: false})
+  },
+
   toggleOpen() {
     let currentOpenState = !!this.state.open
-    this.setState({open: !currentOpenState})
+    this.setState({
+      open: !currentOpenState
+    })
   },
 
   render() {
-    let open = this.state.open ? "open" : "closed"
+    let init, onClick,
+        open = this.state.open ? "open" : "closed"
+
+    if (this.state.initialLoad) {
+      init = "init"
+      onClick = this.firstClick
+    } else {
+      init = ""
+      onClick = this.toggleOpen
+    }
+
     return (
       <FayBase
-        className={[this.props.type, open, "menu"].join(" ")}
-        onClick={this.toggleOpen} >
+        className={[this.props.type, "menu", open, init].join(" ")}
+        onClick={onClick} >
         <div></div>
         <div></div>
         <div></div>

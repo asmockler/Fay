@@ -1,9 +1,13 @@
 $animation-speed: 300ms;
 
 .menu {
+  ////
+  // Base Styles
+  //
   div {
     position: absolute;
     width: 100%;
+    opacity: 1;
     height: 3px;
     background: black;
     margin: auto;
@@ -17,6 +21,12 @@ $animation-speed: 300ms;
     -webkit-animation-timing-function: cubic-bezier(0.23, 0.23, 0.1, 1);
   }
 
+  // The init class keeps the icon from animating on load
+  &.init>div {
+    animation: none!important;
+  }
+
+  // Base styles for the closed icon (hamburger)
   &.closed {
     div:first-of-type {
       top: 15px;
@@ -36,6 +46,7 @@ $animation-speed: 300ms;
     }
   }
 
+  // Base styles for the open icon (X)
   &.open {
     div:first-of-type {
       top: 25px;
@@ -45,7 +56,7 @@ $animation-speed: 300ms;
     }
     div:nth-of-type(2) {
       top: 25px;
-      width: 0;
+      opacity: 0;
       animation-duration: 1ms;
       animation-delay: $animation-speed/2;
       animation-name: middle-close-grow;
@@ -59,8 +70,10 @@ $animation-speed: 300ms;
   }
 
   ////
-  // Top Opening Animations
+  // Animations
   //
+
+  // Top opening animations
   @keyframes top-open-to-middle {
     0% { top: 15px; }
     50% { top: 25px; }
@@ -73,17 +86,13 @@ $animation-speed: 300ms;
     100% { transform: rotate(45deg) }
   }
 
-  ////
   // Middle Opening Animations
-  //
   @keyframes middle-open-shrink {
-    0% { width: 100%; }
-    100% { width: 0; }
+    0% { opacity: 1; }
+    100% { opacity: 0; }
   }
 
-  ////
   // Bottom Opening Animations
-  //
   @keyframes bottom-open-to-middle {
     0% { top: 35px; }
     50% { top: 25px; }
@@ -96,9 +105,7 @@ $animation-speed: 300ms;
     100% { transform: rotate(-45deg) }
   }
 
-  ////
   // Top Closing Animations
-  //
   @keyframes top-close-rotate {
     0% { transform: rotate(45deg) }
     50% { transform: rotate(0deg) }
@@ -111,17 +118,13 @@ $animation-speed: 300ms;
     100% { top: 15px; }
   }
 
-  ////
   // Middle Closing Animations
-  //
   @keyframes middle-close-grow {
-    0% { width: 0 }
-    100% { width: 100% }
+    0% { opacity: 0 }
+    100% { opacity: 1 }
   }
 
-  ////
   // Bottom Closing Animations
-  //
   @keyframes bottom-close-rotate {
     0% { transform: rotate(-45deg) }
     50% { transform: rotate(0deg) }

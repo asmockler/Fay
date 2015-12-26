@@ -20,12 +20,6 @@ const Fay = React.createClass({
     return (
       <div>
         <Menu type="float" />
-        <h1>Fay</h1>
-        <div className={"fay " + (this.state.open ? "open" : "closed")} onClick={this.animate}>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
       </div>
     )
   }

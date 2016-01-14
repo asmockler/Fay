@@ -1,6 +1,7 @@
 import './menu.scss'
 import './float.scss'
 import './fold.scss'
+import './spin.scss'
 import React from 'react'
 import FayBase from './../common/fay_base'
 
@@ -19,7 +20,9 @@ const Menu = React.createClass({
   },
 
   firstClick() {
-    this.setState({initialLoad: false})
+    this.setState({initialLoad: false}, () => {
+      this.toggleOpen()
+    })
   },
 
   toggleOpen() {

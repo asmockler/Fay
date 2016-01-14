@@ -1,6 +1,66 @@
-$animation-speed: 300ms;
-
 .menu.float {
+  &.open {
+    div:first-of-type {
+      animation-name: float-top-open;
+    }
+    div:nth-of-type(2) {
+      animation-name: float-middle-open;
+    }
+    div:last-of-type {
+      animation-name: float-bottom-open;
+    }
+  }
+
+  &.closed {
+    div:first-of-type {
+      animation-name: float-top-close;
+    }
+    div:nth-of-type(2) {
+      animation-name: float-middle-close;
+    }
+    div:last-of-type {
+      animation-name: float-bottom-close;
+    }
+  }
+
+  @keyframes float-top-open {
+    0% { transform: translate3d(0, -10px, 0) rotate(0deg) }
+    50% { transform: translate3d(0, 0, 0) rotate(0deg) }
+    100% { transform: translate3d(0, 0, 0) rotate(45deg) }
+  }
+
+  @keyframes float-middle-open {
+    0% { transform: rotate(0deg); opacity: 1 }
+    50% { transform: rotate(0deg); opacity: 1 }
+    100% { transform: rotate(45deg); opacity: 0 }
+  }
+
+  @keyframes float-bottom-open {
+    0% { transform: translate3d(0, 10px, 0) rotate(0deg) }
+    50% { transform: translate3d(0, 0, 0) rotate(0deg) }
+    100% { transform: translate3d(0, 0, 0) rotate(-45deg) }
+  }
+
+  @keyframes float-top-close {
+    0% { transform: translate3d(0, 10px, 0) rotate(45deg) }
+    50% { transform: translate3d(0, 10px, 0) rotate(0deg) }
+    100% { transform: translate3d(0, 0, 0) rotate(0deg) }
+  }
+
+  @keyframes float-middle-close {
+    0% { transform: rotate(45deg) }
+    50% { transform: rotate(0deg) }
+    100% { transform: rotate(0deg) }
+  }
+
+  @keyframes float-bottom-close {
+    0% { transform: translate3d(0, -10px, 0) rotate(-45deg) }
+    50% { transform: translate3d(0, -10px, 0) rotate(0deg) }
+    100% { transform: translate3d(0, 0, 0) rotate(0deg) }
+  }
+}
+
+/*.menu.float {
   // Closed animations
   &.closed {
     div:first-of-type {
@@ -100,4 +160,4 @@ $animation-speed: 300ms;
     50% { top: 25px; }
     100% { top: 35px; }
   }
-}
+}*/

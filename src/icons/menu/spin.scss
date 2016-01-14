@@ -1,0 +1,58 @@
+.menu.spin {
+  &.open {
+    div:first-of-type {
+      animation-name: spin-top-open;
+    }
+    div:nth-of-type(2) {
+      animation-name: spin-middle-open;
+    }
+    div:last-of-type {
+      animation-name: spin-bottom-open;
+    }
+  }
+
+  &.closed {
+    div:first-of-type {
+      animation-name: spin-top-close;
+    }
+    div:nth-of-type(2) {
+      animation-name: spin-middle-close;
+    }
+    div:last-of-type {
+      animation-name: spin-bottom-close;
+    }
+  }
+
+  ////
+  // Keyframes
+  //
+  @keyframes spin-top-open {
+    0% { transform: translate3d(0, -10px, 0) rotate(0deg) }
+    100% { transform: translate3d(0, 0, 0) rotate(315deg) }
+  }
+
+  @keyframes spin-middle-open {
+    0% { transform: rotate(0deg); opacity: 1 }
+    100% { transform: rotate(315deg); opacity: 1 }
+  }
+
+  @keyframes spin-bottom-open {
+    0% { transform: translate3d(0, 10px, 0) rotate(0deg) }
+    100% { transform: translate3d(0, 0, 0) rotate(225deg) }
+  }
+
+  @keyframes spin-top-close {
+    0% { transform: translate3d(0, 10px, 0) rotate(315deg) }
+    100% { transform: translate3d(0, 0, 0) rotate(0deg) }
+  }
+
+  @keyframes spin-middle-close {
+    0% { transform: rotate(315deg) }
+    100% { transform: rotate(0deg) }
+  }
+
+  @keyframes spin-bottom-close {
+    0% { transform: translate3d(0, -10px, 0) rotate(225deg) }
+    100% { transform: translate3d(0, 0, 0) rotate(0deg) }
+  }
+}

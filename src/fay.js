@@ -21,6 +21,7 @@ const Fay = React.createClass({
       <div>
         <Menu type="float" />
         <Menu type="fold" />
+        <Menu type="spin" />
       </div>
     )
   }

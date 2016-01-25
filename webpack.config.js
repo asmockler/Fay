@@ -3,13 +3,13 @@
 var webpack = require('webpack'),
               HtmlWebpackPlugin = require('html-webpack-plugin'),
               path = require('path'),
-              srcPath = path.join(__dirname, 'src');
+              srcPath = path.join(__dirname, 'test');
 
 module.exports = {
   target: 'web',
   cache: true,
   entry: {
-    module: path.join(srcPath, 'fay.js'),
+    module: path.join(srcPath, 'app.js'),
     common: ['react', 'react-dom']
   },
   resolve: {

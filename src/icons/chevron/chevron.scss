@@ -1,0 +1,52 @@
+$animation-speed: 300ms;
+
+.chevron {
+  ////
+  // Base Styles
+  //
+  div {
+    position: absolute;
+    width: 60%;
+    opacity: 1;
+    height: 3px;
+    background: black;
+    margin: auto;
+    top: 49%;
+
+    animation-duration: $animation-speed;
+
+    animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+
+    animation-timing-function: cubic-bezier(0.23, 0.23, 0.1, 1);
+    -moz-animation-timing-function: cubic-bezier(0.23, 0.23, 0.1, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.23, 0.23, 0.1, 1);
+  }
+
+  &.init>div {
+    animation: none!important;
+  }
+
+  &.down {
+    div:first-of-type {
+      transform: rotate(45deg);
+      left: 0;
+    }
+    div:last-of-type {
+      transform: rotate(-45deg);
+      right: 0;
+    }
+  }
+
+  &.up {
+    div:first-of-type {
+      transform: rotate(-45deg);
+      left: 0;
+    }
+    div:last-of-type {
+      transform: rotate(45deg);
+      right: 0;
+    }
+  }
+}

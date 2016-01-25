@@ -1,10 +1,12 @@
+import './chevron.scss'
+
 import React from 'react'
 import FayBase from './../common/fay_base'
 
 const Chevron = React.createClass({
   getInitialState() {
     return {
-      direction: 'up',
+      direction: 'down',
       initialLoad: true
     }
   },
@@ -39,7 +41,7 @@ const Chevron = React.createClass({
 
     return (
       <FayBase
-        className={[this.props.type], "chevron", this.state.direction, init].join(" ")}
+        className={[this.props.type, "chevron", this.state.direction, init].join(" ")}
         onClick={onClick}>
         <div></div>
         <div></div>
@@ -47,3 +49,5 @@ const Chevron = React.createClass({
     )
   }
 })
+
+export default Chevron

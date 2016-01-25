@@ -33,16 +33,9 @@ const Menu = React.createClass({
   },
 
   render() {
-    let init, onClick,
+    let init = this.state.initialLoad ? "init" : "",
+        onClick = this.state.initialLoad ? this.firstClick : this.toggleOpen,
         open = this.state.open ? "open" : "closed"
-
-    if (this.state.initialLoad) {
-      init = "init"
-      onClick = this.firstClick
-    } else {
-      init = ""
-      onClick = this.toggleOpen
-    }
 
     return (
       <FayBase

@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom'
 
 import Fay from './../src/fay.js'
 const {
-  Menu
+  Menu,
+  Chevron
 } = Fay
 
 const Test = React.createClass({
   render() {
     return (
-      <Menu type="fold" />
+      <div>
+        <Menu type="float" />
+        <Menu type="fold" />
+        <Menu type = "spin" />
+        <Chevron />
+      </div>
     )
   }
 })

@@ -1,0 +1,44 @@
+.chevron.fold {
+  &.up {
+    div:first-of-type {
+      animation-name: chevron-fold-left-up;
+    }
+    div:last-of-type {
+      animation-name: chevron-fold-right-up;
+    }
+  }
+
+  &.down {
+    div:first-of-type {
+      animation-name: chevron-fold-left-down;
+    }
+    div:last-of-type {
+      animation-name: chevron-fold-right-down;
+    }
+  }
+
+  ////
+  // Keyframes
+  //
+  @keyframes chevron-fold-left-up {
+    0% { transform: rotate(45deg); }
+    50% {transform: rotate(90deg) translate3d(0, -10px, 0); }
+    100% { transform: rotate(135deg); }
+  }
+  @keyframes chevron-fold-right-up {
+    0% { transform: rotate(-45deg) }
+    50% {transform: rotate(-90deg) translate3d(0, -10px, 0) }
+    100% { transform: rotate(-135deg) }
+  }
+
+  @keyframes chevron-fold-left-down {
+    0% { transform: rotate(135deg); }
+    50% {transform: rotate(90deg) translate3d(0, -10px, 0); }
+    100% { transform: rotate(45deg); }
+  }
+  @keyframes chevron-fold-right-down {
+    0% { transform: rotate(-135deg); }
+    50% {transform: rotate(-90deg) translate3d(0, -10px, 0); }
+    100% { transform: rotate(-45deg); }
+  }
+}

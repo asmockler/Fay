@@ -1,4 +1,5 @@
 import './chevron.scss'
+import './fold.scss'
 
 import React from 'react'
 import FayBase from './../common/fay_base'
